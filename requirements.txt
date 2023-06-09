@@ -1,0 +1,7 @@
+timm
+pyyaml
+termcolor
+tensorboardX
+opencv-python
+yacs
+ptflops
