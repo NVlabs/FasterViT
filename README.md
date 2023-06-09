@@ -19,7 +19,11 @@ NVIDIA
 FasterViT achieves a SOTA Pareto-front in
 terms of accuracy vs. image throughput.
 
-![teaser](./assets/plot.png)
+<p align="center">
+<img src="https://github.com/NVlabs/FasterViT/assets/26806394/a9076c2c-29d1-4903-86bd-f556c72f464c" width=62% height=62% 
+class="center">
+</p>
+
 
 We introduce a new self-attention mechanism, denoted as Hierarchical
 Attention (HAT), that captures both short and long-range information by learning
