@@ -20,7 +20,7 @@ FasterViT achieves a SOTA Pareto-front in
 terms of accuracy vs. image throughput.
 
 <p align="center">
-<img src="https://github.com/NVlabs/FasterViT/assets/26806394/a9076c2c-29d1-4903-86bd-f556c72f464c" width=62% height=62% 
+<img src="https://github.com/NVlabs/FasterViT/assets/26806394/253d1a2e-b5f5-4a9b-a362-6cdd16bfccc1" width=62% height=62% 
 class="center">
 </p>
 
