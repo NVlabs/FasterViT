@@ -33,7 +33,7 @@ cross-window carrier tokens.
 
 ## 💥 News 💥
 
-- **[06.07.2023]** 🔥🔥 We have released source code and ImageNet-1K FasterViT-models !
+- **[06.09.2023]** 🔥🔥 We have released source code and ImageNet-1K FasterViT-models !
 
 ## Results
 
