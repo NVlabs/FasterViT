@@ -268,7 +268,7 @@ sub-folders for each class with the following structure:
   ```
 
 ## Acknowledgement
-This repository is built on top of the [timm](https://github.com/huggingface/pytorch-image-models) repository. We thank [Ross Wrightman](https://rwightman.com/) Ross Wrightman for creating and maintaining this high-quality library.  
+This repository is built on top of the [timm](https://github.com/huggingface/pytorch-image-models) repository. We thank [Ross Wrightman](https://rwightman.com/) for creating and maintaining this high-quality library.  
 
 ## Licenses
 
