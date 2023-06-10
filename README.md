@@ -12,8 +12,6 @@ FasterViT: Fast Vision Transformers
 [Jan Kautz](https://jankautz.com/), 
 [Pavlo Molchanov](https://www.pmolchanov.com/).
 
-NVIDIA
-
 For business inquiries, please visit our website and submit the form: [NVIDIA Research Licensing](https://www.nvidia.com/en-us/research/inquiries/)
 
 
