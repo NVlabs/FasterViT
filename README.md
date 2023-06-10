@@ -14,6 +14,9 @@ FasterViT: Fast Vision Transformers
 
 NVIDIA
 
+For business inquiries, please visit our website and submit the form: [NVIDIA Research Licensing](https://www.nvidia.com/en-us/research/inquiries/)
+
+
 --- 
 
 FasterViT achieves a SOTA Pareto-front in
