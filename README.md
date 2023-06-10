@@ -233,11 +233,19 @@ Please see [TRAINING.md](TRAINING.md) for detailed training instructions of all 
 
 ## Evaluation
 
-To evaluate a pre-trained checkpoint using ImageNet-1K validation set:
+The FasterViT models can be evaluated on ImageNet-1K validation set using the following: 
 
-```bash
-python validate.py --model <model-name> --checkpoint <checkpoint-path> --data_dir <imagenet-path> --batch-size <batch-size-per-gpu>
 ```
+python validate.py \
+--model <model-name>
+--checkpoint <checkpoint-path>
+--data_dir <imagenet-path>
+--batch-size <batch-size-per-gpu
+\
+``` 
+
+Here `--model` is the FasterViT variant (e.g. `faster_vit_0_224_1k`), `--checkpoint` is the path to pretrained model weights, `--data_dir` is the path to ImageNet-1K validation set and `--batch-size` is the number of batch size.  
+
 
 ## Installation
 
@@ -283,7 +291,7 @@ This repository is built on top of the [timm](https://github.com/huggingface/pyt
 
 Copyright © 2023, NVIDIA Corporation. All rights reserved.
 
-This work is made available under the Nvidia Source Code License-NC. Click [here](LICENSE) to view a copy of this license.
+This work is made available under the NVIDIA Source Code License-NC. Click [here](LICENSE) to view a copy of this license.
 
 For license information regarding the timm repository, please refer to its [repository](https://github.com/rwightman/pytorch-image-models).
 
