@@ -241,10 +241,9 @@ python validate.py \
 --checkpoint <checkpoint-path>
 --data_dir <imagenet-path>
 --batch-size <batch-size-per-gpu
-\
 ``` 
 
-Here `--model` is the FasterViT variant (e.g. `faster_vit_0_224_1k`), `--checkpoint` is the path to pretrained model weights, `--data_dir` is the path to ImageNet-1K validation set and `--batch-size` is the number of batch size.  
+Here `--model` is the FasterViT variant (e.g. `faster_vit_0_224_1k`), `--checkpoint` is the path to pretrained model weights, `--data_dir` is the path to ImageNet-1K validation set and `--batch-size` is the number of batch size. We also have a sample script [here](https://github.com/NVlabs/FasterViT/blob/main/validate.sh). 
 
 
 ## Installation
