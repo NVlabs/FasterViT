@@ -43,7 +43,7 @@ cross-window carrier tokens.
 - [ ] Segmentation Code + models
 
 
-## Results
+## Results + Pretrained Models
 
 ### ImageNet-1K
 **FasterViT ImageNet-1K Pretrained Models**
