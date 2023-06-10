@@ -38,7 +38,7 @@ cross-window carrier tokens.
 - [x] ImageNet-1K Training Code
 - [x] ImageNet-1K Pre-trained models
 - [ ] Any-resolution FasterViT
-- [ ] ImageNet-22K Pre-trained models
+- [ ] ImageNet-21K Pre-trained models
 - [ ] Detection Code + models
 - [ ] Segmentation Code + models
 
