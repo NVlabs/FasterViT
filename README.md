@@ -15,7 +15,7 @@ For business inquiries, please visit our website and submit the form: [NVIDIA Re
 
 --- 
 
-FasterViT achieves a SOTA Pareto-front in
+FasterViT achieves a new SOTA Pareto-front in
 terms of accuracy vs. image throughput (no extra training data !)
 
 <p align="center">
