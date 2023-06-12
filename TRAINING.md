@@ -25,6 +25,7 @@ torchrun --nnodes=4 --nproc_per_node=8 train.py \
 --lr 0.005
 --mesa 0.1
 --model-ema
+--opt adamw
 --weight-decay 0.005
 --amp
 --input-size 3 224 224
@@ -43,6 +44,7 @@ torchrun --nnodes=4 --nproc_per_node=8 train.py \
 --lr 0.005
 --mesa 0.2
 --model-ema
+--opt adamw
 --weight-decay 0.005
 --amp
 --input-size 3 224 224
@@ -62,6 +64,7 @@ torchrun --nnodes=4 --nproc_per_node=8 train.py \
 --lr 0.005
 --mesa 0.5
 --model-ema
+--opt adamw
 --weight-decay 0.005
 --amp
 --input-size 3 224 224
@@ -80,6 +83,7 @@ torchrun --nnodes=4 --nproc_per_node=8 train.py \
 --lr 0.005
 --mesa 0.5
 --model-ema
+--opt adamw
 --weight-decay 0.005
 --amp
 --input-size 3 224 224
@@ -98,6 +102,7 @@ torchrun --nnodes=4 --nproc_per_node=8 train.py \
 --lr 0.005
 --mesa 5.0
 --model-ema
+--opt lamb
 --weight-decay 0.12
 --amp
 --input-size 3 224 224
@@ -116,6 +121,7 @@ torchrun --nnodes=4 --nproc_per_node=8 train.py \
 --lr 0.005
 --mesa 5.0
 --model-ema
+--opt lamb
 --weight-decay 0.12
 --amp
 --input-size 3 224 224
@@ -134,6 +140,7 @@ torchrun --nnodes=4 --nproc_per_node=8 train.py \
 --lr 0.005
 --mesa 5.0
 --model-ema
+--opt lamb
 --weight-decay 0.12
 --amp
 --input-size 3 224 224
@@ -143,3 +150,7 @@ torchrun --nnodes=4 --nproc_per_node=8 train.py \
 
 [MESA](https://arxiv.org/pdf/2205.14083.pdf) is an effective way of addressing the overfitting issue which can hinder the peformance, especially for larger models. The idea is to start training without MESA until reaching a quarter of all training epochs (the exact starting point of MESA is also a hyper-parameter which can be tuned [here](https://github.com/NVlabs/FasterViT/blob/main/train.py#L352
 )). At this stage, we use the EMA model to act as a teacher and help the base model to learn more robust representations. We have tuned MESA hyper-parameters for various FasterViT models, as shown above.
+
+### LAMB optimizer
+
+For larger FasterViT models (i.e. 4,5 and 6 variants), we use LAMB optimizer as it is more stable during training (e.g. avoiding NaN) and is suited better for larger batch sizes and learning rates. 
