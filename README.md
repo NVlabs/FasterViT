@@ -226,7 +226,7 @@ All models use `crop_pct=0.875`. Results are obtained by running inference on Im
 
 </table>
 
-
+A, R and V2 denote ImageNet-A, ImageNet-R and ImageNet-V2 respectively. 
 ## Training
 
 Please see [TRAINING.md](TRAINING.md) for detailed training instructions of all models. 
