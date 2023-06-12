@@ -1,4 +1,4 @@
-timm
+timm==0.6.12
 pyyaml
 termcolor
 tensorboardX
