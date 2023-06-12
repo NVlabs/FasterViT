@@ -6,7 +6,7 @@ training all models, unless otherwise specified.
 
 ## ImageNet-1K Training 
 A FasterViT model can be trained by specifying the model variant `--model` (or config file `--config`), with local (per GPU)
-batch size `--batch-size`, drop path rate `--drop-path-rate`, [MESA](https://arxiv.org/pdf/2205.14083.pdf) hyper-parameter
+batch size `--batch-size`, drop path rate `--drop-path-rate`, optimizer `--opt`, [MESA](https://arxiv.org/pdf/2205.14083.pdf) hyper-parameter
 `--mesa`, weight `--weight-decay`, learning rate `--lr`, input with image resolution `--input-size` and by enabling
 AMP `--amp` and EMA `--model-ema`. The experiment name and data directory are passed by specifying `--tag` and `--data_dir`
 , respectively.
