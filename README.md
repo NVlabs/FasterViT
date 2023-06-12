@@ -35,12 +35,13 @@ cross-window carrier tokens.
 - **[06.09.2023]** 🔥🔥 We have released source code and ImageNet-1K FasterViT-models !
 
 ## Catalog
-- [x] ImageNet-1K Training Code
-- [x] ImageNet-1K Pre-trained models
+- [x] ImageNet-1K training code
+- [x] ImageNet-1K pre-trained models
+- [ ] ImageNet-21K pre-trained models
+- [ ] ImageNet-21K fine-tune scripts
 - [ ] Any-resolution FasterViT
-- [ ] ImageNet-21K Pre-trained models
-- [ ] Detection Code (DINO) + models
-- [ ] Segmentation Code + models
+- [ ] Detection code (DINO) + models
+- [ ] Segmentation code + models
 
 
 ## Results + Pretrained Models
