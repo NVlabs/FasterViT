@@ -118,7 +118,7 @@ split_bn: false
 start_epoch: null
 std: null
 sync_bn: false
-tag: fixed8_adamw_faster_vit_3_224_plus_bs128_lr0.005_wd0.075_m1.0
+tag: faster_vit_3_224
 torchscript: false
 train_interpolation: random
 train_split: train
