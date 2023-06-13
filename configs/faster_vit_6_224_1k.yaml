@@ -106,7 +106,6 @@ recovery_interval: 0
 remode: pixel
 reprob: 0.25
 resplit: false
-resume: /scratch/TRANSFORMER_project/output/train/fixed8_lamb_faster_vit_7_224_plus_bs128_lr0.005_wd0.15_m5.0_s30/20230404-004541-faster_vit_7_224_plus-224/model_best.pth.tar
 save_images: false
 scale:
 - 0.08
@@ -118,7 +117,7 @@ split_bn: false
 start_epoch: null
 std: null
 sync_bn: false
-tag: fixed8_lamb_faster_vit_7_224_plus_2_bs128_lr0.005_wd0.15_m5.0_s30
+tag: faster_vit_6_224
 torchscript: false
 train_interpolation: random
 train_split: train
