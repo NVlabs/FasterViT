@@ -1,6 +1,6 @@
 # FasterViT: Fast Vision Transformers with Hierarchical Attention
 
-Official PyTorch implementation of **FasterViT: Fast Vision Transformers with Hierarchical Attention**.
+Official PyTorch implementation of [**FasterViT: Fast Vision Transformers with Hierarchical Attention**](https://arxiv.org/abs/2306.06189).
 
 [Ali Hatamizadeh](https://research.nvidia.com/person/ali-hatamizadeh),
 [Greg Heinrich](https://developer.nvidia.com/blog/author/gheinrich/),
