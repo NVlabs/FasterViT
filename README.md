@@ -255,7 +255,6 @@ The dependencies can be installed by running:
 pip install -r requirements.txt
 ```
 
-
 ## Data Preparation
 
 Please download the ImageNet dataset from its official website. The training and validation images need to have
@@ -283,6 +282,10 @@ sub-folders for each class with the following structure:
       └── ...
  
   ```
+
+## Third-party Extentions
+We always welcome third-party extentions/implementations and usage for other purposes. If you would like your work to be listed in this repository, please raise and issue and provide us with detailed information.  
+
 
 ## Acknowledgement
 This repository is built on top of the [timm](https://github.com/huggingface/pytorch-image-models) repository. We thank [Ross Wrightman](https://rwightman.com/) for creating and maintaining this high-quality library.  
