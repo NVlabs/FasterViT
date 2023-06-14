@@ -141,7 +141,7 @@ cross-window carrier tokens.
 </table>
 
 
-### ImageNet-A - ImageNet-R - ImageNet-V2
+### Robustness (ImageNet-A - ImageNet-R - ImageNet-V2)
 
 All models use `crop_pct=0.875`. Results are obtained by running inference on ImageNet-1K pretrained models without finetuning.
 <table>
