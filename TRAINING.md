@@ -154,3 +154,32 @@ torchrun --nnodes=4 --nproc_per_node=8 train.py \
 ### LAMB optimizer
 
 For larger FasterViT models (i.e. 4,5 and 6 variants), we use LAMB optimizer as it is more stable during training (e.g. avoiding NaN) and is suited better for larger batch sizes and learning rates. 
+
+
+### Data Preparation
+
+Please download the ImageNet dataset from its official website. The training and validation images need to have
+sub-folders for each class with the following structure:
+
+```bash
+  imagenet
+  ├── train
+  │   ├── class1
+  │   │   ├── img1.jpeg
+  │   │   ├── img2.jpeg
+  │   │   └── ...
+  │   ├── class2
+  │   │   ├── img3.jpeg
+  │   │   └── ...
+  │   └── ...
+  └── val
+      ├── class1
+      │   ├── img4.jpeg
+      │   ├── img5.jpeg
+      │   └── ...
+      ├── class2
+      │   ├── img6.jpeg
+      │   └── ...
+      └── ...
+ 
+  ```
