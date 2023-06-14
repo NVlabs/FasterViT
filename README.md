@@ -255,34 +255,6 @@ The dependencies can be installed by running:
 pip install -r requirements.txt
 ```
 
-## Data Preparation
-
-Please download the ImageNet dataset from its official website. The training and validation images need to have
-sub-folders for each class with the following structure:
-
-```bash
-  imagenet
-  ├── train
-  │   ├── class1
-  │   │   ├── img1.jpeg
-  │   │   ├── img2.jpeg
-  │   │   └── ...
-  │   ├── class2
-  │   │   ├── img3.jpeg
-  │   │   └── ...
-  │   └── ...
-  └── val
-      ├── class1
-      │   ├── img4.jpeg
-      │   ├── img5.jpeg
-      │   └── ...
-      ├── class2
-      │   ├── img6.jpeg
-      │   └── ...
-      └── ...
- 
-  ```
-
 ## Third-party Extentions
 We always welcome third-party extentions/implementations and usage for other purposes. If you would like your work to be listed in this repository, please raise and issue and provide us with detailed information.  
 
