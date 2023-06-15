@@ -982,7 +982,7 @@ def faster_vit_0_224(pretrained=False, **kwargs):
     resolution = kwargs.pop("resolution", 224)
     model = FasterViT(depths=[2, 3, 6, 5],
                       num_heads=[2, 4, 8, 16],
-                      window_size=[8, 8, 7, 7],
+                      window_size=[7, 7, 7, 7],
                       ct_size=2,
                       dim=64,
                       in_dim=64,
@@ -1002,7 +1002,7 @@ def faster_vit_1_224(pretrained=False, **kwargs):
     resolution = kwargs.pop("resolution", 224)
     model = FasterViT(depths=[1, 3, 8, 5],
                       num_heads=[2, 4, 8, 16],
-                      window_size=[8, 8, 7, 7],
+                      window_size=[7, 7, 7, 7],
                       ct_size=2,
                       dim=80,
                       in_dim=32,
@@ -1022,7 +1022,7 @@ def faster_vit_2_224(pretrained=False, **kwargs):
     resolution = kwargs.pop("resolution", 224)
     model = FasterViT(depths=[3, 3, 8, 5],
                       num_heads=[2, 4, 8, 16],
-                      window_size=[8, 8, 7, 7],
+                      window_size=[7, 7, 7, 7],
                       ct_size=2,
                       dim=96,
                       in_dim=64,
