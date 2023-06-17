@@ -32,14 +32,15 @@ cross-window carrier tokens.
 
 ## 💥 News 💥
 
+- **[06.17.2023]** 🔥 Any-resolution FasterViT model is now available ! the model can be used for variety of applications such as detection and segmentation or high-resolution fine-tuning with arbitrary input image resolutions. 
 - **[06.09.2023]** 🔥🔥 We have released source code and ImageNet-1K FasterViT-models !
 
 ## Catalog
 - [x] ImageNet-1K training code
 - [x] ImageNet-1K pre-trained models
+- [x] Any-resolution FasterViT
 - [ ] ImageNet-21K pre-trained models
 - [ ] ImageNet-21K fine-tune scripts
-- [ ] Any-resolution FasterViT
 - [ ] Detection code (DINO) + models
 - [ ] Segmentation code + models
 
