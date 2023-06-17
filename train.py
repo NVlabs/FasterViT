@@ -39,9 +39,10 @@ from timm.utils import ApexScaler, NativeScaler
 from scheduler.scheduler_factory import create_scheduler
 import shutil
 from utils.datasets import imagenet_lmdb_dataset
-from models.faster_vit import *
 from tensorboard import TensorboardLogger
 from ptflops import get_model_complexity_info
+from models.faster_vit import *
+from models.faster_vit_any_res import *
 
 try:
     from apex import amp
