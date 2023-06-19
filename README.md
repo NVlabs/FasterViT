@@ -24,11 +24,11 @@ class="center">
 </p>
 
 
-We introduce a new self-attention mechanism, denoted as Hierarchical
+<!-- We introduce a new self-attention mechanism, denoted as Hierarchical
 Attention (HAT), that captures both short and long-range information by learning
 cross-window carrier tokens.
 
-![teaser](./assets/hierarchial_attn.png)
+![teaser](./fastervit/assets/hierarchial_attn.png) -->
 
 
 ## 💥 News 💥
@@ -36,6 +36,38 @@ cross-window carrier tokens.
 - **[06.18.2023]** 🔥 We have released the FasterViT [pip package](https://pypi.org/project/fastervit/0.8.3/) !
 - **[06.17.2023]** 🔥 [Any-resolution FasterViT](https://github.com/NVlabs/FasterViT/blob/main/models/faster_vit_any_res.py)  model is now available ! the model can be used for variety of applications such as detection and segmentation or high-resolution fine-tuning with arbitrary input image resolutions. 
 - **[06.09.2023]** 🔥🔥 We have released source code and ImageNet-1K FasterViT-models !
+
+## Quick Start
+
+The FasterViT can be conveniently installed by:
+
+```bash
+pip install fastervit
+```
+
+A FasterViT model with default hyper-parameters can be created as in the following:
+
+```python
+>>> from fastervit import create_model
+
+# Define a fastervit-0 model (224 x 224 resolution)
+>>> model = create_model('faster_vit_0_224')
+```
+
+We can also use the any-resolution FasterViT model to accommodate arbitrary image resolutions. In the following, we define an any-resolution FasterViT-1
+model with input resolution of 576 x 960, window sizes of 12 and 6 in 3rd and 4th stages, carrier token size of 2 and embedding dimension of
+128:
+
+```python
+>>> from fastervit import create_model
+
+# Define a fastervit-1 model (576 x 960 resolution)
+>>> model = create_model('faster_vit_1_any_res', 
+                          resolution=[576, 960],
+                          window_size=[7, 7, 12, 6],
+                          ct_size=2,
+                          dim=128,)
+```
 
 ## Catalog
 - [x] ImageNet-1K training code
@@ -47,6 +79,7 @@ cross-window carrier tokens.
 - [ ] Detection code (DINO) + models
 - [ ] Segmentation code + models
 
+--- 
 
 ## Results + Pretrained Models
 

@@ -11,7 +11,8 @@
 import torch
 import torch.nn as nn
 from timm.models.registry import register_model
-from timm.models.layers import trunc_normal_, DropPath, to_2tuple, LayerNorm2d
+from timm.models.layers import trunc_normal_, DropPath, LayerNorm2d
+from .registry import register_model
 import numpy as np
 
 
@@ -978,15 +979,22 @@ class FasterViT(nn.Module):
 
 @register_model
 def faster_vit_0_224(pretrained=False, **kwargs):
-    drop_path_rate = kwargs.pop("drop_path_rate", 0.2)
+    depths = kwargs.pop("depths", [2, 3, 6, 5])
+    num_heads = kwargs.pop("num_heads", [2, 4, 8, 16])
+    window_size = kwargs.pop("window_size", [7, 7, 7, 7])
+    ct_size = kwargs.pop("ct_size", 2)
+    dim = kwargs.pop("dim", 64)
+    in_dim = kwargs.pop("in_dim", 64)
+    mlp_ratio = kwargs.pop("mlp_ratio", 4)
     resolution = kwargs.pop("resolution", 224)
-    model = FasterViT(depths=[2, 3, 6, 5],
-                      num_heads=[2, 4, 8, 16],
-                      window_size=[7, 7, 7, 7],
-                      ct_size=2,
-                      dim=64,
-                      in_dim=64,
-                      mlp_ratio=4,
+    drop_path_rate = kwargs.pop("drop_path_rate", 0.2)
+    model = FasterViT(depths=depths,
+                      num_heads=num_heads,
+                      window_size=window_size,
+                      ct_size=ct_size,
+                      dim=dim,
+                      in_dim=in_dim,
+                      mlp_ratio=mlp_ratio,
                       resolution=resolution,
                       drop_path_rate=drop_path_rate,
                       **kwargs)
@@ -998,15 +1006,22 @@ def faster_vit_0_224(pretrained=False, **kwargs):
 
 @register_model
 def faster_vit_1_224(pretrained=False, **kwargs):
-    drop_path_rate = kwargs.pop("drop_path_rate", 0.2)
+    depths = kwargs.pop("depths", [1, 3, 8, 5])
+    num_heads = kwargs.pop("num_heads", [2, 4, 8, 16])
+    window_size = kwargs.pop("window_size", [7, 7, 7, 7])
+    ct_size = kwargs.pop("ct_size", 2)
+    dim = kwargs.pop("dim", 80)
+    in_dim = kwargs.pop("in_dim", 32)
+    mlp_ratio = kwargs.pop("mlp_ratio", 4)
     resolution = kwargs.pop("resolution", 224)
-    model = FasterViT(depths=[1, 3, 8, 5],
-                      num_heads=[2, 4, 8, 16],
-                      window_size=[7, 7, 7, 7],
-                      ct_size=2,
-                      dim=80,
-                      in_dim=32,
-                      mlp_ratio=4,
+    drop_path_rate = kwargs.pop("drop_path_rate", 0.2)
+    model = FasterViT(depths=depths,
+                      num_heads=num_heads,
+                      window_size=window_size,
+                      ct_size=ct_size,
+                      dim=dim,
+                      in_dim=in_dim,
+                      mlp_ratio=mlp_ratio,
                       resolution=resolution,
                       drop_path_rate=drop_path_rate,
                       **kwargs)
@@ -1018,15 +1033,22 @@ def faster_vit_1_224(pretrained=False, **kwargs):
 
 @register_model
 def faster_vit_2_224(pretrained=False, **kwargs):
-    drop_path_rate = kwargs.pop("drop_path_rate", 0.2)
+    depths = kwargs.pop("depths", [3, 3, 8, 5])
+    num_heads = kwargs.pop("num_heads", [2, 4, 8, 16])
+    window_size = kwargs.pop("window_size", [7, 7, 7, 7])
+    ct_size = kwargs.pop("ct_size", 2)
+    dim = kwargs.pop("dim", 96)
+    in_dim = kwargs.pop("in_dim", 64)
+    mlp_ratio = kwargs.pop("mlp_ratio", 4)
     resolution = kwargs.pop("resolution", 224)
-    model = FasterViT(depths=[3, 3, 8, 5],
-                      num_heads=[2, 4, 8, 16],
-                      window_size=[7, 7, 7, 7],
-                      ct_size=2,
-                      dim=96,
-                      in_dim=64,
-                      mlp_ratio=4,
+    drop_path_rate = kwargs.pop("drop_path_rate", 0.2)
+    model = FasterViT(depths=depths,
+                      num_heads=num_heads,
+                      window_size=window_size,
+                      ct_size=ct_size,
+                      dim=dim,
+                      in_dim=in_dim,
+                      mlp_ratio=mlp_ratio,
                       resolution=resolution,
                       drop_path_rate=drop_path_rate,
                       **kwargs)
@@ -1038,18 +1060,26 @@ def faster_vit_2_224(pretrained=False, **kwargs):
 
 @register_model
 def faster_vit_3_224(pretrained=False, **kwargs):
-    drop_path_rate = kwargs.pop("drop_path_rate", 0.3)
+    depths = kwargs.pop("depths", [3, 3, 12, 5])
+    num_heads = kwargs.pop("num_heads", [2, 4, 8, 16])
+    window_size = kwargs.pop("window_size", [7, 7, 7, 7])
+    ct_size = kwargs.pop("ct_size", 2)
+    dim = kwargs.pop("dim", 128)
+    in_dim = kwargs.pop("in_dim", 64)
+    mlp_ratio = kwargs.pop("mlp_ratio", 4)
     resolution = kwargs.pop("resolution", 224)
-    model = FasterViT(depths=[3, 3, 12, 5],
-                      num_heads=[2, 4, 8, 16],
-                      window_size=[7, 7, 7, 7],
-                      ct_size=2,
-                      dim=128,
-                      in_dim=64,
-                      mlp_ratio=4,
+    drop_path_rate = kwargs.pop("drop_path_rate", 0.3)
+    layer_scale = kwargs.pop("layer_scale", 1e-5)
+    model = FasterViT(depths=depths,
+                      num_heads=num_heads,
+                      window_size=window_size,
+                      ct_size=ct_size,
+                      dim=dim,
+                      in_dim=in_dim,
+                      mlp_ratio=mlp_ratio,
                       resolution=resolution,
                       drop_path_rate=drop_path_rate,
-                      layer_scale=1e-5,
+                      layer_scale=layer_scale,
                       layer_scale_conv=None,
                       do_propagation=True,
                       **kwargs)
@@ -1061,18 +1091,26 @@ def faster_vit_3_224(pretrained=False, **kwargs):
 
 @register_model
 def faster_vit_4_224(pretrained=False, **kwargs):
-    drop_path_rate = kwargs.pop("drop_path_rate", 0.3)
+    depths = kwargs.pop("depths", [3, 3, 12, 5])
+    num_heads = kwargs.pop("num_heads", [2, 4, 8, 16])
+    window_size = kwargs.pop("window_size", [7, 7, 7, 7])
+    ct_size = kwargs.pop("ct_size", 2)
+    dim = kwargs.pop("dim", 196)
+    in_dim = kwargs.pop("in_dim", 64)
+    mlp_ratio = kwargs.pop("mlp_ratio", 4)
     resolution = kwargs.pop("resolution", 224)
-    model = FasterViT(depths=[3, 3, 12, 5],
-                      num_heads=[4, 8, 16, 32],
-                      window_size=[7, 7, 7, 7],
-                      ct_size=2,
-                      dim=196,
-                      in_dim=64,
-                      mlp_ratio=4,
+    drop_path_rate = kwargs.pop("drop_path_rate", 0.3)
+    layer_scale = kwargs.pop("layer_scale", 1e-5)
+    model = FasterViT(depths=depths,
+                      num_heads=num_heads,
+                      window_size=window_size,
+                      ct_size=ct_size,
+                      dim=dim,
+                      in_dim=in_dim,
+                      mlp_ratio=mlp_ratio,
                       resolution=resolution,
                       drop_path_rate=drop_path_rate,
-                      layer_scale=1e-5,
+                      layer_scale=layer_scale,
                       layer_scale_conv=None,
                       layer_norm_last=False,
                       do_propagation=True,
@@ -1085,18 +1123,26 @@ def faster_vit_4_224(pretrained=False, **kwargs):
 
 @register_model
 def faster_vit_5_224(pretrained=False, **kwargs):
-    drop_path_rate = kwargs.pop("drop_path_rate", 0.3)
+    depths = kwargs.pop("depths", [3, 3, 12, 5])
+    num_heads = kwargs.pop("num_heads", [4, 8, 16, 32])
+    window_size = kwargs.pop("window_size", [7, 7, 7, 7])
+    ct_size = kwargs.pop("ct_size", 2)
+    dim = kwargs.pop("dim", 320)
+    in_dim = kwargs.pop("in_dim", 64)
+    mlp_ratio = kwargs.pop("mlp_ratio", 4)
     resolution = kwargs.pop("resolution", 224)
-    model = FasterViT(depths=[3, 3, 12, 5],
-                      num_heads=[4, 8, 16, 32],
-                      window_size=[7, 7, 7, 7],
-                      ct_size=2,
-                      dim=320,
-                      in_dim=64,
-                      mlp_ratio=4,
+    drop_path_rate = kwargs.pop("drop_path_rate", 0.3)
+    layer_scale = kwargs.pop("layer_scale", 1e-5)
+    model = FasterViT(depths=depths,
+                      num_heads=num_heads,
+                      window_size=window_size,
+                      ct_size=ct_size,
+                      dim=dim,
+                      in_dim=in_dim,
+                      mlp_ratio=mlp_ratio,
                       resolution=resolution,
                       drop_path_rate=drop_path_rate,
-                      layer_scale=1e-5,
+                      layer_scale=layer_scale,
                       layer_scale_conv=None,
                       layer_norm_last=False,
                       do_propagation=True,
@@ -1109,18 +1155,26 @@ def faster_vit_5_224(pretrained=False, **kwargs):
 
 @register_model
 def faster_vit_6_224(pretrained=False, **kwargs):
-    drop_path_rate = kwargs.pop("drop_path_rate", 0.5)
+    depths = kwargs.pop("depths", [3, 3, 16, 8])
+    num_heads = kwargs.pop("num_heads", [4, 8, 16, 32])
+    window_size = kwargs.pop("window_size", [7, 7, 7, 7])
+    ct_size = kwargs.pop("ct_size", 2)
+    dim = kwargs.pop("dim", 320)
+    in_dim = kwargs.pop("in_dim", 64)
+    mlp_ratio = kwargs.pop("mlp_ratio", 4)
     resolution = kwargs.pop("resolution", 224)
-    model = FasterViT(depths=[3, 3, 16, 8],
-                      num_heads=[4, 8, 16, 32],
-                      window_size=[7, 7, 7, 7],
-                      ct_size=2,
-                      dim=320,
-                      in_dim=64,
-                      mlp_ratio=4,
+    drop_path_rate = kwargs.pop("drop_path_rate", 0.5)
+    layer_scale = kwargs.pop("layer_scale", 1e-5)
+    model = FasterViT(depths=depths,
+                      num_heads=num_heads,
+                      window_size=window_size,
+                      ct_size=ct_size,
+                      dim=dim,
+                      in_dim=in_dim,
+                      mlp_ratio=mlp_ratio,
                       resolution=resolution,
                       drop_path_rate=drop_path_rate,
-                      layer_scale=1e-5,
+                      layer_scale=layer_scale,
                       layer_scale_conv=None,
                       layer_norm_last=False,
                       do_propagation=True,

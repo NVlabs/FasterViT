@@ -148,7 +148,7 @@ torchrun --nnodes=4 --nproc_per_node=8 train.py \
 ``` 
 ### Why using MESA ? 
 
-[MESA](https://arxiv.org/pdf/2205.14083.pdf) is an effective way of addressing the overfitting issue which can hinder the peformance, especially for larger models. The idea is to start training without MESA until reaching a quarter of all training epochs (the exact starting point of MESA is also a hyper-parameter which can be tuned [here](https://github.com/NVlabs/FasterViT/blob/main/train.py#L352
+[MESA](https://arxiv.org/pdf/2205.14083.pdf) is an effective way of addressing the overfitting issue which can hinder the peformance, especially for larger models. The idea is to start training without MESA until reaching a quarter of all training epochs (the exact starting point of MESA is also a hyper-parameter which can be tuned [here](./fastervit/train.py#L351
 )). At this stage, we use the EMA model to act as a teacher and help the base model to learn more robust representations. We have tuned MESA hyper-parameters for various FasterViT models, as shown above.
 
 ### LAMB optimizer
