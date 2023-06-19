@@ -1,4 +1,4 @@
-import torch, time
+import torch
 import timm
 import io
 import onnx
