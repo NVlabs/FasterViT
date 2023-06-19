@@ -33,7 +33,7 @@ cross-window carrier tokens.
 
 ## 💥 News 💥
 
-- **[06.18.2023]** 🔥 We have released the FasterViT [pip package](https://pypi.org/project/fastervit/0.8.3/) !
+- **[06.18.2023]** 🔥 We have released the FasterViT [pip package](https://pypi.org/project/fastervit/) !
 - **[06.17.2023]** 🔥 [Any-resolution FasterViT](https://github.com/NVlabs/FasterViT/blob/main/models/faster_vit_any_res.py)  model is now available ! the model can be used for variety of applications such as detection and segmentation or high-resolution fine-tuning with arbitrary input image resolutions. 
 - **[06.09.2023]** 🔥🔥 We have released source code and ImageNet-1K FasterViT-models !
 
