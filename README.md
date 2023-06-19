@@ -66,7 +66,7 @@ model with input resolution of 576 x 960, window sizes of 12 and 6 in 3rd and 4t
                           resolution=[576, 960],
                           window_size=[7, 7, 12, 6],
                           ct_size=2,
-                          dim=128,)
+                          dim=128)
 ```
 
 ## Catalog
