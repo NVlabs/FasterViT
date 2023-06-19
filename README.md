@@ -50,7 +50,7 @@ A FasterViT model with default hyper-parameters can be created as in the followi
 ```python
 >>> from fastervit import create_model
 
-# Define a fastervit-0 model (224 x 224 resolution)
+# Define fastervit-0 model (224 x 224 resolution)
 >>> model = create_model('faster_vit_0_224')
 ```
 
@@ -61,7 +61,7 @@ model with input resolution of 576 x 960, window sizes of 12 and 6 in 3rd and 4t
 ```python
 >>> from fastervit import create_model
 
-# Define a fastervit-1 model (576 x 960 resolution)
+# Define any-resolution FasterViT-1 model (576 x 960 resolution)
 >>> model = create_model('faster_vit_1_any_res', 
                           resolution=[576, 960],
                           window_size=[7, 7, 12, 6],
