@@ -299,6 +299,19 @@ We always welcome third-party extentions/implementations and usage for other pur
 ## Acknowledgement
 This repository is built on top of the [timm](https://github.com/huggingface/pytorch-image-models) repository. We thank [Ross Wrightman](https://rwightman.com/) for creating and maintaining this high-quality library.  
 
+## Citation
+
+Please consider citing FasterViT if this repository is useful for your work:
+
+```
+@article{hatamizadeh2023fastervit,
+  title={FasterViT: Fast Vision Transformers with Hierarchical Attention},
+  author={Hatamizadeh, Ali and Heinrich, Greg and Yin, Hongxu and Tao, Andrew and Alvarez, Jose M and Kautz, Jan and Molchanov, Pavlo},
+  journal={arXiv preprint arXiv:2306.06189},
+  year={2023}
+}
+```
+
 ## Licenses
 
 Copyright © 2023, NVIDIA Corporation. All rights reserved.
