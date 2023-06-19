@@ -747,7 +747,7 @@ class TokenInitializer(nn.Module):
 
     def forward(self, x):
         x = self.to_global_feature(x)
-        B, C, W, H = x.shape
+        B, C, H, W = x.shape
         ct = x.view(B, C, H // self.window_size, self.window_size, W // self.window_size, self.window_size)
         ct = ct.permute(0, 2, 4, 3, 5, 1).reshape(-1, H*W, C)
         return ct
