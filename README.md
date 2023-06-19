@@ -24,11 +24,11 @@ class="center">
 </p>
 
 
-<!-- We introduce a new self-attention mechanism, denoted as Hierarchical
+We introduce a new self-attention mechanism, denoted as Hierarchical
 Attention (HAT), that captures both short and long-range information by learning
 cross-window carrier tokens.
 
-![teaser](./fastervit/assets/hierarchial_attn.png) -->
+![teaser](./fastervit/assets/hierarchial_attn.png)
 
 
 ## 💥 News 💥
