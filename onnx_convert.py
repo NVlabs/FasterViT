@@ -4,6 +4,7 @@ import io
 import onnx
 import os
 from models.faster_vit import *
+from models.faster_vit_any_res import *
 
 def main():
     model_name='faster_vit_0_224'
