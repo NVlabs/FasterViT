@@ -27,7 +27,7 @@ _model_has_pretrained = set()  # set of model names that have pretrained weight 
 _model_default_cfgs = dict()  # central repo for model default_cfgs
 
 
-def register_model(fn):
+def register_pip_model(fn):
     # lookup containing module
     mod = sys.modules[fn.__module__]
     module_name_split = fn.__module__.split('.')

@@ -12,7 +12,7 @@ import torch
 import torch.nn as nn
 from timm.models.registry import register_model
 from timm.models.layers import trunc_normal_, DropPath, LayerNorm2d
-from .registry import register_model
+from .registry import register_pip_model
 import numpy as np
 
 
@@ -975,6 +975,7 @@ class FasterViT(nn.Module):
         return x
 
 
+@register_pip_model
 @register_model
 def faster_vit_0_224(pretrained=False, **kwargs):
     depths = kwargs.pop("depths", [2, 3, 6, 5])
@@ -1002,6 +1003,7 @@ def faster_vit_0_224(pretrained=False, **kwargs):
     return model
 
 
+@register_pip_model
 @register_model
 def faster_vit_1_224(pretrained=False, **kwargs):
     depths = kwargs.pop("depths", [1, 3, 8, 5])
@@ -1029,6 +1031,7 @@ def faster_vit_1_224(pretrained=False, **kwargs):
     return model
 
 
+@register_pip_model
 @register_model
 def faster_vit_2_224(pretrained=False, **kwargs):
     depths = kwargs.pop("depths", [3, 3, 8, 5])
@@ -1056,6 +1059,7 @@ def faster_vit_2_224(pretrained=False, **kwargs):
     return model
 
 
+@register_pip_model
 @register_model
 def faster_vit_3_224(pretrained=False, **kwargs):
     depths = kwargs.pop("depths", [3, 3, 12, 5])
@@ -1087,6 +1091,7 @@ def faster_vit_3_224(pretrained=False, **kwargs):
     return model
 
 
+@register_pip_model
 @register_model
 def faster_vit_4_224(pretrained=False, **kwargs):
     depths = kwargs.pop("depths", [3, 3, 12, 5])
@@ -1119,6 +1124,7 @@ def faster_vit_4_224(pretrained=False, **kwargs):
     return model
 
 
+@register_pip_model
 @register_model
 def faster_vit_5_224(pretrained=False, **kwargs):
     depths = kwargs.pop("depths", [3, 3, 12, 5])
@@ -1151,6 +1157,7 @@ def faster_vit_5_224(pretrained=False, **kwargs):
     return model
 
 
+@register_pip_model
 @register_model
 def faster_vit_6_224(pretrained=False, **kwargs):
     depths = kwargs.pop("depths", [3, 3, 16, 8])
