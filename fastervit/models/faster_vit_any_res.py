@@ -12,7 +12,7 @@ import torch
 import torch.nn as nn
 from timm.models.registry import register_model
 from timm.models.layers import trunc_normal_, DropPath, LayerNorm2d
-from .registry import register_model
+from .registry import register_pip_model
 import numpy as np
 
 
@@ -863,7 +863,7 @@ class FasterViTLayer(nn.Module):
             pad_r = (self.window_size - W % self.window_size) % self.window_size
             pad_b = (self.window_size - H % self.window_size) % self.window_size
             if pad_r > 0 or pad_b > 0:
-                x = F.pad(x, (0,pad_r,0,pad_b))
+                x = torch.nn.functional.pad(x, (0,pad_r,0,pad_b))
                 _, _, Hp, Wp = x.shape
             else:
                 Hp, Wp = H, W
@@ -1003,6 +1003,7 @@ class FasterViT(nn.Module):
         return x
 
 
+@register_pip_model
 @register_model
 def faster_vit_0_any_res(pretrained=False, **kwargs):
     depths = kwargs.pop("depths", [2, 3, 6, 5])
@@ -1030,6 +1031,7 @@ def faster_vit_0_any_res(pretrained=False, **kwargs):
     return model
 
 
+@register_pip_model
 @register_model
 def faster_vit_1_any_res(pretrained=False, **kwargs):
     depths = kwargs.pop("depths", [1, 3, 8, 5])
@@ -1057,6 +1059,7 @@ def faster_vit_1_any_res(pretrained=False, **kwargs):
     return model
 
 
+@register_pip_model
 @register_model
 def faster_vit_2_any_res(pretrained=False, **kwargs):
     depths = kwargs.pop("depths", [3, 3, 8, 5])
@@ -1084,6 +1087,7 @@ def faster_vit_2_any_res(pretrained=False, **kwargs):
     return model
 
 
+@register_pip_model
 @register_model
 def faster_vit_3_any_res(pretrained=False, **kwargs):
     depths = kwargs.pop("depths", [3, 3, 12, 5])
@@ -1115,6 +1119,7 @@ def faster_vit_3_any_res(pretrained=False, **kwargs):
     return model
 
 
+@register_pip_model
 @register_model
 def faster_vit_4_any_res(pretrained=False, **kwargs):
     depths = kwargs.pop("depths", [3, 3, 12, 5])
@@ -1147,6 +1152,7 @@ def faster_vit_4_any_res(pretrained=False, **kwargs):
     return model
 
 
+@register_pip_model
 @register_model
 def faster_vit_5_any_res(pretrained=False, **kwargs):
     depths = kwargs.pop("depths", [3, 3, 12, 5])
@@ -1179,6 +1185,7 @@ def faster_vit_5_any_res(pretrained=False, **kwargs):
     return model
 
 
+@register_pip_model
 @register_model
 def faster_vit_6_any_res(pretrained=False, **kwargs):
     depths = kwargs.pop("depths", [3, 3, 16, 8])
