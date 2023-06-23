@@ -23,8 +23,6 @@ terms of accuracy vs. image throughput (no extra training data !)
 class="center">
 </p>
 
-#![teaser](./fastervit/assets/plot.png)
-
 We introduce a new self-attention mechanism, denoted as Hierarchical
 Attention (HAT), that captures both short and long-range information by learning
 cross-window carrier tokens.
