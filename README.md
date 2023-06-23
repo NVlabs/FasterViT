@@ -286,7 +286,12 @@ Here `--model` is the FasterViT variant (e.g. `faster_vit_0_224_1k`), `--checkpo
 
 ## ONNX Conversion
 
-We provide ONNX conversion script to enable dynamic batch size inference. 
+We provide ONNX conversion script to enable dynamic batch size inference. For instance, to generate ONNX model for `faster_vit_0_any_res` with resolution 576 x 960 and ONNX opset number 17, the following can be used. 
+
+```bash 
+python onnx_convert --model-name faster_vit_0_any_res --resolution-h 576 --resolution-w 960 --onnx-opset 17
+
+```
 
 
 ## Installation
@@ -306,11 +311,7 @@ This repository is built on top of the [timm](https://github.com/huggingface/pyt
 
 ## Citation
 
-Please consider citing FasterViT if this repository is useful for your work. For instance, to generate ONNX model for `faster_vit_0_any_res` with resolution 576 x 960 and ONNX opset number 17, the following can be used. 
-
-```bash 
-python onnx_convert --model-name faster_vit_0_any_res --resolution-h 576 --resolution-w 960 --onnx-opset 17
-```
+Please consider citing FasterViT if this repository is useful for your work. 
 
 ```
 @article{hatamizadeh2023fastervit,
