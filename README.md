@@ -23,6 +23,7 @@ terms of accuracy vs. image throughput (no extra training data !)
 class="center">
 </p>
 
+#![teaser](./fastervit/assets/plot.png)
 
 We introduce a new self-attention mechanism, denoted as Hierarchical
 Attention (HAT), that captures both short and long-range information by learning
@@ -301,8 +302,9 @@ The dependencies can be installed by running:
 pip install -r requirements.txt
 ```
 
-## Third-party Extentions
-We always welcome third-party extentions/implementations and usage for other purposes. If you would like your work to be listed in this repository, please raise and issue and provide us with detailed information.  
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=NVlabs/FasterViT&type=Date)](https://star-history.com/#NVlabs/FasterViT&Date)
 
 ## Citation
 
@@ -316,9 +318,10 @@ Please consider citing FasterViT if this repository is useful for your work.
   year={2023}
 }
 ```
-## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=NVlabs/FasterViT&type=Date)](https://star-history.com/#NVlabs/FasterViT&Date)
+## Third-party Extentions
+We always welcome third-party extentions/implementations and usage for other purposes. If you would like your work to be listed in this repository, please raise and issue and provide us with detailed information.  
+
 
 ## Licenses
 
