@@ -69,10 +69,9 @@ def window_partition(x, window_size):
     return windows
 
 
-def window_reverse(windows, window_size, H, W):
-    B = int(windows.shape[0] / (H * W / window_size / window_size))
-    x = windows.reshape(B, H // window_size, W // window_size, window_size, window_size, -1)
-    x = x.permute(0, 5, 1, 3, 2, 4).reshape(B,windows.shape[2], H, W)
+def window_reverse(windows, window_size, H, W, B):
+    x = windows.view(B, H // window_size, W // window_size, window_size, window_size, -1)
+    x = x.permute(0, 5, 1, 3, 2, 4).reshape(B, windows.shape[2], H, W)
     return x
 
 
@@ -874,7 +873,7 @@ class FasterViTLayer(nn.Module):
             x, ct = blk(x, ct)
         if self.transformer_block:
             x = window_reverse(x, self
-                               .window_size, Hp, Wp)
+                               .window_size, Hp, Wp, B)
             if pad_r > 0 or pad_b > 0:
                 x = x[:, :, :H, :W].contiguous()
         if self.downsample is None:
