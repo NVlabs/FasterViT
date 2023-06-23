@@ -30,7 +30,6 @@ cross-window carrier tokens.
 
 ![teaser](./fastervit/assets/hierarchial_attn.png)
 
-
 ## 💥 News 💥
 
 - **[06.18.2023]** 🔥 We have released the FasterViT [pip package](https://pypi.org/project/fastervit/) !
@@ -305,10 +304,6 @@ pip install -r requirements.txt
 ## Third-party Extentions
 We always welcome third-party extentions/implementations and usage for other purposes. If you would like your work to be listed in this repository, please raise and issue and provide us with detailed information.  
 
-
-## Acknowledgement
-This repository is built on top of the [timm](https://github.com/huggingface/pytorch-image-models) repository. We thank [Ross Wrightman](https://rwightman.com/) for creating and maintaining this high-quality library.  
-
 ## Citation
 
 Please consider citing FasterViT if this repository is useful for your work. 
@@ -321,6 +316,9 @@ Please consider citing FasterViT if this repository is useful for your work.
   year={2023}
 }
 ```
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=NVlabs/FasterViT&type=Date)](https://star-history.com/#NVlabs/FasterViT&Date)
 
 ## Licenses
 
@@ -331,3 +329,7 @@ This work is made available under the NVIDIA Source Code License-NC. Click [here
 For license information regarding the timm repository, please refer to its [repository](https://github.com/rwightman/pytorch-image-models).
 
 For license information regarding the ImageNet dataset, please see the [ImageNet official website](https://www.image-net.org/). 
+
+## Acknowledgement
+This repository is built on top of the [timm](https://github.com/huggingface/pytorch-image-models) repository. We thank [Ross Wrightman](https://rwightman.com/) for creating and maintaining this high-quality library.  
+
