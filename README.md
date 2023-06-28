@@ -72,6 +72,7 @@ model with input resolution of 576 x 960, window sizes of 12 and 6 in 3rd and 4t
 - [x] ImageNet-1K pre-trained models
 - [x] Any-resolution FasterViT
 - [x] FasterViT pip-package release
+- [ ] Add capablity to initialize any-resolution FasterViT from ImageNet-pretrained weights. 
 - [ ] Update training scripts to support model.compile
 - [ ] Add isotropic FasterViT
 - [ ] ImageNet-21K pre-trained models
