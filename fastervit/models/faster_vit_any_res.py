@@ -14,7 +14,7 @@ from timm.models.registry import register_model
 from timm.models.layers import trunc_normal_, DropPath, LayerNorm2d
 from .registry import register_pip_model
 import numpy as np
-
+from ..utils.checkpoint import load_checkpoint
 
 def _cfg(url='', **kwargs):
     return {'url': url,
@@ -868,7 +868,8 @@ class FasterViT(nn.Module):
         x = self.forward_features(x)
         x = self.head(x)
         return x
-
+    def load_state_dict(self, pretrained, strict: bool = False):
+        load_checkpoint(self, pretrained, strict=strict)
 
 @register_pip_model
 @register_model
@@ -894,7 +895,7 @@ def faster_vit_0_any_res(pretrained=False, **kwargs):
                       **kwargs)
     model.default_cfg = default_cfgs['faster_vit_0_any_res']
     if pretrained:
-        model.load_state_dict(torch.load(pretrained))
+        model.load_state_dict(pretrained)
     return model
 
 
@@ -922,7 +923,7 @@ def faster_vit_1_any_res(pretrained=False, **kwargs):
                       **kwargs)
     model.default_cfg = default_cfgs['faster_vit_1_any_res']
     if pretrained:
-        model.load_state_dict(torch.load(pretrained))
+        model.load_state_dict(pretrained)
     return model
 
 
@@ -950,7 +951,7 @@ def faster_vit_2_any_res(pretrained=False, **kwargs):
                       **kwargs)
     model.default_cfg = default_cfgs['faster_vit_2_any_res']
     if pretrained:
-        model.load_state_dict(torch.load(pretrained))
+        model.load_state_dict(pretrained)
     return model
 
 
@@ -982,7 +983,7 @@ def faster_vit_3_any_res(pretrained=False, **kwargs):
                       **kwargs)
     model.default_cfg = default_cfgs['faster_vit_3_any_res']
     if pretrained:
-        model.load_state_dict(torch.load(pretrained))
+        model.load_state_dict(pretrained)
     return model
 
 
@@ -1015,7 +1016,7 @@ def faster_vit_4_any_res(pretrained=False, **kwargs):
                       **kwargs)
     model.default_cfg = default_cfgs['faster_vit_4_any_res']
     if pretrained:
-        model.load_state_dict(torch.load(pretrained))
+        model.load_state_dict(pretrained)
     return model
 
 
@@ -1048,7 +1049,7 @@ def faster_vit_5_any_res(pretrained=False, **kwargs):
                       **kwargs)
     model.default_cfg = default_cfgs['faster_vit_5_any_res']
     if pretrained:
-        model.load_state_dict(torch.load(pretrained))
+        model.load_state_dict(pretrained)
     return model
 
 
@@ -1081,5 +1082,5 @@ def faster_vit_6_any_res(pretrained=False, **kwargs):
                       **kwargs)
     model.default_cfg = default_cfgs['faster_vit_6_any_res']
     if pretrained:
-        model.load_state_dict(torch.load(pretrained))
+        model.load_state_dict(pretrained)
     return model
