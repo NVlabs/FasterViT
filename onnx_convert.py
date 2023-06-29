@@ -17,8 +17,9 @@ from fastervit.models.faster_vit import *
 from fastervit.models.faster_vit_any_res import *
 
 parser = argparse.ArgumentParser(description='Export FasterVit model XYZ to ONNX file XYZ.onnx')
-parser.add_argument('--model-name', type=str, default="faster_vit_0_224")
+parser.add_argument('--model-name', type=str, default="faster_vit_0_any_res")
 parser.add_argument('--result-dir', type=str, default="./")
+parser.add_argument("--pretrained_path",type=str, default="")
 parser.add_argument('--onnx-opset', type=int, default=17)
 parser.add_argument('--resolution-h', type=int, default=224)
 parser.add_argument('--resolution-w', type=int, default=224)
@@ -30,12 +31,14 @@ def main():
     resolution_w = args.resolution_w
     onnx_opset = args.onnx_opset
     result_dir = args.result_dir
+    pretrained_path = args.pretrained_path
     if "_224" in model_name:
         assert resolution_h == resolution_w
 
     model = timm.create_model(
         model_name,
         resolution=resolution_h if "_224" in model_name else [resolution_h, resolution_w],
+        pretrained=pretrained_path,
         exportable=True)
 
     in_size = (1, 3, resolution_h, resolution_w)
