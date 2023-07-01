@@ -14,7 +14,7 @@ from timm.models.registry import register_model
 from timm.models.layers import trunc_normal_, DropPath, LayerNorm2d
 from .registry import register_pip_model
 import numpy as np
-from ..utils.checkpoint import load_checkpoint
+from utils.checkpoint import load_checkpoint
 
 def _cfg(url='', **kwargs):
     return {'url': url,
@@ -79,16 +79,15 @@ def ct_dewindow(ct, W, H, window_size):
     bs = ct.shape[0]
     N=ct.shape[2]
     ct2 = ct.view(-1, W//window_size, H//window_size, window_size, window_size, N).permute(0, 5, 1, 3, 2, 4)
-    ct2 = ct2.reshape(bs, N, W, H).flatten(2).transpose(1, 2)
+    ct2 = ct2.reshape(bs, N, W*H).transpose(1, 2)
     return ct2
 
 
 def ct_window(ct, W, H, window_size):
     bs = ct.shape[0]
     N = ct.shape[2]
-    ct = ct.transpose(1, 2).view(bs, N, W, H)
-    ct = ct.view(bs, N, H // window_size, window_size, W // window_size, window_size)
-    ct = ct.permute(0, 2, 4, 3, 5, 1).reshape(-1, H * W, N)
+    ct = ct.view(bs, H // window_size, window_size, W // window_size, window_size, N)
+    ct = ct.permute(0, 1, 3, 2, 4, 5)
     return ct
 
 class PosEmbMLPSwinv2D(nn.Module):
