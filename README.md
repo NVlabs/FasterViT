@@ -31,7 +31,7 @@ cross-window carrier tokens.
 
 ## 💥 News 💥
 
-- **[06.30.2023]** 🔥🔥 We have further improved the [Any-resolution FasterViT](https://developer.nvidia.com/tensorrt-getting-started) throughput of FasterViT models by 10-15% on average across different models.  
+- **[06.30.2023]** 🔥🔥 We have further improved the [TensorRT](https://developer.nvidia.com/tensorrt-getting-started) throughput of FasterViT models by 10-15% on average across different models.  
 - **[06.29.2023]** 🔥 Any-resolution FasterViT model can now be intitialized from pre-trained ImageNet resolution (224 x 244) models.
 - **[06.18.2023]** We have released the FasterViT [pip package](https://pypi.org/project/fastervit/) !
 - **[06.17.2023]** 🔥 [Any-resolution FasterViT](./fastervit/models/faster_vit_any_res.py)  model is now available ! the model can be used for variety of applications such as detection and segmentation or high-resolution fine-tuning with arbitrary input image resolutions.
