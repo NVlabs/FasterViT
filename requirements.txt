@@ -4,4 +4,3 @@ termcolor
 tensorboardX
 opencv-python
 yacs
-ptflops
