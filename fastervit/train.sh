@@ -11,4 +11,4 @@ DR=0.3
 MESA=0.25
 
 torchrun --nproc_per_node=1 train.py --mesa ${MESA} --input-size 3 224 224 --crop-pct=0.875 \
---data_dir=$DATA_PATH --model $MODEL --amp --weight-decay ${WD} --drop-path ${DR} --batch-size $BS --tag $EXP --lr $LR --warmup-lr $WR_LR
+--data_dir=$DATA_PATH --model $MODEL --amp --weight-decay ${WD} --model-ema --drop-path ${DR} --batch-size $BS --tag $EXP --lr $LR --warmup-lr $WR_LR

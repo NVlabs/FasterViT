@@ -11,7 +11,7 @@ This script was started from an early version of the PyTorch ImageNet example
 NVIDIA CUDA specific speedups adopted from NVIDIA Apex examplesf
 (https://github.com/NVIDIA/apex/tree/master/examples/imagenet)
 
-Hacked together by / Copyright 2020 Ross Wightman (https://github.com/rwightman)
+Hacked together by / Copyright 2023 Ross Wightman (https://github.com/rwightman)
 """
 import argparse
 import time
@@ -40,7 +40,6 @@ from scheduler.scheduler_factory import create_scheduler
 import shutil
 from utils.datasets import imagenet_lmdb_dataset
 from tensorboard import TensorboardLogger
-from ptflops import get_model_complexity_info
 from models.faster_vit import *
 from models.faster_vit_any_res import *
 
@@ -438,12 +437,7 @@ def main():
         checkpoint_path=args.initial_checkpoint,
         attn_drop_rate=args.attn_drop_rate,
         drop_rate=args.drop_rate)
-        # drop_path_rate=args.drop_path)
-
-    macs, params = get_model_complexity_info(model, tuple([3, args.input_size[1], args.input_size[2]]),
-                                                as_strings=False, print_per_layer_stat=False, verbose=False)
-    print(f"Model stats: macs: {macs / 1e9}, and params (M): {params / 1e6}")
-
+    
     if args.bfloat:
         args.dtype = torch.bfloat16
     else:
