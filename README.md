@@ -44,12 +44,11 @@ A pretrained FasterViT model with default hyper-parameters can be created as in 
 
 # Define fastervit-0 model with 224 x 224 resolution
 
->>> model = create_model('faster_vit_0_any_res', 
+>>> model = create_model('faster_vit_0_224', 
                           pretrained=True,
-                          model_path="/tmp/faster_vit_1.pth.tar")
-
->>> model = create_model('faster_vit_0_224', pretrained=True)
+                          model_path="/tmp/faster_vit_0.pth.tar")
 ```
+
 We can adjust where to download the above FasterViT-0 model by passing `model_path`.
 
 We can also simply test the model by passing a dummy input image. The output is the logits:
