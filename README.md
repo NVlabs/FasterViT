@@ -62,7 +62,7 @@ We can also simply test the model by passing a dummy input image. The output is 
 
 We can also use the any-resolution FasterViT model to accommodate arbitrary image resolutions. In the following, we define an any-resolution FasterViT-0
 model with input resolution of 576 x 960, window sizes of 12 and 6 in 3rd and 4th stages, carrier token size of 2 and embedding dimension of
-128:
+64:
 
 ```python
 >>> from fastervit import create_model
