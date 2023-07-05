@@ -49,7 +49,7 @@ A pretrained FasterViT model with default hyper-parameters can be created as in 
                           model_path="/tmp/faster_vit_0.pth.tar")
 ```
 
-We can adjust where to download the above FasterViT-0 model by passing `model_path`.
+`model_path` is used to set the directory to download the model.
 
 We can also simply test the model by passing a dummy input image. The output is the logits:
 
