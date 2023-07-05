@@ -14,7 +14,9 @@ from timm.models.registry import register_model
 from timm.models.layers import trunc_normal_, DropPath, LayerNorm2d
 from .registry import register_pip_model
 import numpy as np
-from utils.checkpoint import load_checkpoint
+from pathlib import Path
+
+
 
 def _cfg(url='', **kwargs):
     return {'url': url,
@@ -31,31 +33,31 @@ def _cfg(url='', **kwargs):
 
 
 default_cfgs = {
-    'faster_vit_0_any_res': _cfg(url='',
+    'faster_vit_0_any_res': _cfg(url='https://huggingface.co/ahatamiz/FasterViT/resolve/main/fastervit_0_224_1k.pth.tar',
                                  crop_pct=0.875,
                                  input_size=(3, 224, 224),
                                  crop_mode='center'),
-    'faster_vit_1_any_res': _cfg(url='',
+    'faster_vit_1_any_res': _cfg(url='https://huggingface.co/ahatamiz/FasterViT/resolve/main/fastervit_1_224_1k.pth.tar',
                                  crop_pct=1.0,
                                  input_size=(3, 224, 224),
                                  crop_mode='center'),
-    'faster_vit_2_any_res': _cfg(url='',
+    'faster_vit_2_any_res': _cfg(url='https://huggingface.co/ahatamiz/FasterViT/resolve/main/fastervit_2_224_1k.pth.tar',
                                  crop_pct=1.0,
                                  input_size=(3, 224, 224),
                                  crop_mode='center'),
-    'faster_vit_3_any_res': _cfg(url='',
+    'faster_vit_3_any_res': _cfg(url='https://huggingface.co/ahatamiz/FasterViT/resolve/main/fastervit_3_224_1k.pth.tar',
                                  crop_pct=1.0,
                                  input_size=(3, 224, 224),
                                  crop_mode='center'),
-    'faster_vit_4_any_res': _cfg(url='',
+    'faster_vit_4_any_res': _cfg(url='https://huggingface.co/ahatamiz/FasterViT/resolve/main/fastervit_4_224_1k.pth.tar',
                                  crop_pct=1.0,
                                  input_size=(3, 224, 224),
                                  crop_mode='center'),
-    'faster_vit_5_any_res': _cfg(url='',
+    'faster_vit_5_any_res': _cfg(url='https://huggingface.co/ahatamiz/FasterViT/resolve/main/fastervit_5_224_1k.pth.tar',
                                  crop_pct=1.0,
                                  input_size=(3, 224, 224),
                                  crop_mode='center'),
-    'faster_vit_6_any_res': _cfg(url='',
+    'faster_vit_6_any_res': _cfg(url='https://huggingface.co/ahatamiz/FasterViT/resolve/main/fastervit_6_224_1k.pth.tar',
                                  crop_pct=1.0,
                                  input_size=(3, 224, 224),
                                  crop_mode='center'),
@@ -89,6 +91,108 @@ def ct_window(ct, W, H, window_size):
     ct = ct.view(bs, H // window_size, window_size, W // window_size, window_size, N)
     ct = ct.permute(0, 1, 3, 2, 4, 5)
     return ct
+
+
+def _load_state_dict(module, state_dict, strict=False, logger=None):
+    """Load state_dict to a module.
+
+    This method is modified from :meth:`torch.nn.Module.load_state_dict`.
+    Default value for ``strict`` is set to ``False`` and the message for
+    param mismatch will be shown even if strict is False.
+
+    Args:
+        module (Module): Module that receives the state_dict.
+        state_dict (OrderedDict): Weights.
+        strict (bool): whether to strictly enforce that the keys
+            in :attr:`state_dict` match the keys returned by this module's
+            :meth:`~torch.nn.Module.state_dict` function. Default: ``False``.
+        logger (:obj:`logging.Logger`, optional): Logger to log the error
+            message. If not specified, print function will be used.
+    """
+    unexpected_keys = []
+    all_missing_keys = []
+    err_msg = []
+
+    metadata = getattr(state_dict, '_metadata', None)
+    state_dict = state_dict.copy()
+    if metadata is not None:
+        state_dict._metadata = metadata
+    
+    def load(module, prefix=''):
+        local_metadata = {} if metadata is None else metadata.get(
+            prefix[:-1], {})
+        module._load_from_state_dict(state_dict, prefix, local_metadata, True,
+                                     all_missing_keys, unexpected_keys,
+                                     err_msg)
+        for name, child in module._modules.items():
+            if child is not None:
+                load(child, prefix + name + '.')
+
+    load(module)
+    load = None
+    missing_keys = [
+        key for key in all_missing_keys if 'num_batches_tracked' not in key
+    ]
+
+    if unexpected_keys:
+        err_msg.append('unexpected key in source '
+                       f'state_dict: {", ".join(unexpected_keys)}\n')
+    if missing_keys:
+        err_msg.append(
+            f'missing keys in source state_dict: {", ".join(missing_keys)}\n')
+
+    
+    if len(err_msg) > 0:
+        err_msg.insert(
+            0, 'The model and loaded state dict do not match exactly\n')
+        err_msg = '\n'.join(err_msg)
+        if strict:
+            raise RuntimeError(err_msg)
+        elif logger is not None:
+            logger.warning(err_msg)
+        else:
+            print(err_msg)
+
+
+def _load_checkpoint(model,
+                    filename,
+                    map_location='cpu',
+                    strict=False,
+                    logger=None):
+    """Load checkpoint from a file or URI.
+
+    Args:
+        model (Module): Module to load checkpoint.
+        filename (str): Accept local filepath, URL, ``torchvision://xxx``,
+            ``open-mmlab://xxx``. Please refer to ``docs/model_zoo.md`` for
+            details.
+        map_location (str): Same as :func:`torch.load`.
+        strict (bool): Whether to allow different params for the model and
+            checkpoint.
+        logger (:mod:`logging.Logger` or None): The logger for error message.
+
+    Returns:
+        dict or OrderedDict: The loaded checkpoint.
+    """
+    checkpoint = torch.load(filename, map_location=map_location)
+    if not isinstance(checkpoint, dict):
+        raise RuntimeError(
+            f'No state_dict found in checkpoint file {filename}')
+    if 'state_dict' in checkpoint:
+        state_dict = checkpoint['state_dict']
+    elif 'model' in checkpoint:
+        state_dict = checkpoint['model']
+    else:
+        state_dict = checkpoint
+    if list(state_dict.keys())[0].startswith('module.'):
+        state_dict = {k[7:]: v for k, v in state_dict.items()}
+
+    if sorted(list(state_dict.keys()))[0].startswith('encoder'):
+        state_dict = {k.replace('encoder.', ''): v for k, v in state_dict.items() if k.startswith('encoder.')}
+
+    _load_state_dict(model, state_dict, strict, logger)
+    return checkpoint
+
 
 class PosEmbMLPSwinv2D(nn.Module):
     def __init__(self,
@@ -867,8 +971,14 @@ class FasterViT(nn.Module):
         x = self.forward_features(x)
         x = self.head(x)
         return x
-    def load_state_dict(self, pretrained, strict: bool = False):
-        load_checkpoint(self, pretrained, strict=strict)
+    
+    def _load_state_dict(self, 
+                         pretrained, 
+                         strict: bool = False):
+        _load_checkpoint(self, 
+                         pretrained, 
+                         strict=strict)
+
 
 @register_pip_model
 @register_model
@@ -882,6 +992,7 @@ def faster_vit_0_any_res(pretrained=False, **kwargs):
     mlp_ratio = kwargs.pop("mlp_ratio", 4)
     resolution = kwargs.pop("resolution", [576, 960])
     drop_path_rate = kwargs.pop("drop_path_rate", 0.2)
+    model_path = kwargs.pop("model_path", "/tmp/faster_vit_0.pth.tar")
     model = FasterViT(depths=depths,
                       num_heads=num_heads,
                       window_size=window_size,
@@ -894,7 +1005,10 @@ def faster_vit_0_any_res(pretrained=False, **kwargs):
                       **kwargs)
     model.default_cfg = default_cfgs['faster_vit_0_any_res']
     if pretrained:
-        model.load_state_dict(pretrained)
+        if not Path(model_path).is_file():
+            url = model.default_cfg['url']
+            torch.hub.download_url_to_file(url=url, dst=model_path)
+        model._load_state_dict(model_path)
     return model
 
 
@@ -910,6 +1024,7 @@ def faster_vit_1_any_res(pretrained=False, **kwargs):
     mlp_ratio = kwargs.pop("mlp_ratio", 4)
     resolution = kwargs.pop("resolution", [576, 960])
     drop_path_rate = kwargs.pop("drop_path_rate", 0.2)
+    model_path = kwargs.pop("model_path", "/tmp/faster_vit_1.pth.tar")
     model = FasterViT(depths=depths,
                       num_heads=num_heads,
                       window_size=window_size,
@@ -922,7 +1037,10 @@ def faster_vit_1_any_res(pretrained=False, **kwargs):
                       **kwargs)
     model.default_cfg = default_cfgs['faster_vit_1_any_res']
     if pretrained:
-        model.load_state_dict(pretrained)
+        if not Path(model_path).is_file():
+            url = model.default_cfg['url']
+            torch.hub.download_url_to_file(url=url, dst=model_path)
+        model._load_state_dict(model_path)
     return model
 
 
@@ -938,6 +1056,7 @@ def faster_vit_2_any_res(pretrained=False, **kwargs):
     mlp_ratio = kwargs.pop("mlp_ratio", 4)
     resolution = kwargs.pop("resolution", [541, 960])
     drop_path_rate = kwargs.pop("drop_path_rate", 0.2)
+    model_path = kwargs.pop("model_path", "/tmp/faster_vit_2.pth.tar")
     model = FasterViT(depths=depths,
                       num_heads=num_heads,
                       window_size=window_size,
@@ -950,7 +1069,10 @@ def faster_vit_2_any_res(pretrained=False, **kwargs):
                       **kwargs)
     model.default_cfg = default_cfgs['faster_vit_2_any_res']
     if pretrained:
-        model.load_state_dict(pretrained)
+        if not Path(model_path).is_file():
+            url = model.default_cfg['url']
+            torch.hub.download_url_to_file(url=url, dst=model_path)
+        model._load_state_dict(model_path)
     return model
 
 
@@ -967,6 +1089,7 @@ def faster_vit_3_any_res(pretrained=False, **kwargs):
     resolution = kwargs.pop("resolution", [576, 960])
     drop_path_rate = kwargs.pop("drop_path_rate", 0.3)
     layer_scale = kwargs.pop("layer_scale", 1e-5)
+    model_path = kwargs.pop("model_path", "/tmp/faster_vit_3.pth.tar")
     model = FasterViT(depths=depths,
                       num_heads=num_heads,
                       window_size=window_size,
@@ -982,7 +1105,10 @@ def faster_vit_3_any_res(pretrained=False, **kwargs):
                       **kwargs)
     model.default_cfg = default_cfgs['faster_vit_3_any_res']
     if pretrained:
-        model.load_state_dict(pretrained)
+        if not Path(model_path).is_file():
+            url = model.default_cfg['url']
+            torch.hub.download_url_to_file(url=url, dst=model_path)
+        model._load_state_dict(model_path)
     return model
 
 
@@ -999,6 +1125,7 @@ def faster_vit_4_any_res(pretrained=False, **kwargs):
     resolution = kwargs.pop("resolution", [576, 960])
     drop_path_rate = kwargs.pop("drop_path_rate", 0.3)
     layer_scale = kwargs.pop("layer_scale", 1e-5)
+    model_path = kwargs.pop("model_path", "/tmp/faster_vit_4.pth.tar")
     model = FasterViT(depths=depths,
                       num_heads=num_heads,
                       window_size=window_size,
@@ -1015,7 +1142,10 @@ def faster_vit_4_any_res(pretrained=False, **kwargs):
                       **kwargs)
     model.default_cfg = default_cfgs['faster_vit_4_any_res']
     if pretrained:
-        model.load_state_dict(pretrained)
+        if not Path(model_path).is_file():
+            url = model.default_cfg['url']
+            torch.hub.download_url_to_file(url=url, dst=model_path)
+        model._load_state_dict(model_path)
     return model
 
 
@@ -1032,6 +1162,7 @@ def faster_vit_5_any_res(pretrained=False, **kwargs):
     resolution = kwargs.pop("resolution", [576, 960])
     drop_path_rate = kwargs.pop("drop_path_rate", 0.3)
     layer_scale = kwargs.pop("layer_scale", 1e-5)
+    model_path = kwargs.pop("model_path", "/tmp/faster_vit_5.pth.tar")
     model = FasterViT(depths=depths,
                       num_heads=num_heads,
                       window_size=window_size,
@@ -1048,7 +1179,10 @@ def faster_vit_5_any_res(pretrained=False, **kwargs):
                       **kwargs)
     model.default_cfg = default_cfgs['faster_vit_5_any_res']
     if pretrained:
-        model.load_state_dict(pretrained)
+        if not Path(model_path).is_file():
+            url = model.default_cfg['url']
+            torch.hub.download_url_to_file(url=url, dst=model_path)
+        model._load_state_dict(model_path)
     return model
 
 
@@ -1065,6 +1199,7 @@ def faster_vit_6_any_res(pretrained=False, **kwargs):
     resolution = kwargs.pop("resolution", [576, 960])
     drop_path_rate = kwargs.pop("drop_path_rate", 0.5)
     layer_scale = kwargs.pop("layer_scale", 1e-5)
+    model_path = kwargs.pop("model_path", "/tmp/faster_vit_6.pth.tar")
     model = FasterViT(depths=depths,
                       num_heads=num_heads,
                       window_size=window_size,
@@ -1081,5 +1216,8 @@ def faster_vit_6_any_res(pretrained=False, **kwargs):
                       **kwargs)
     model.default_cfg = default_cfgs['faster_vit_6_any_res']
     if pretrained:
-        model.load_state_dict(pretrained)
+        if not Path(model_path).is_file():
+            url = model.default_cfg['url']
+            torch.hub.download_url_to_file(url=url, dst=model_path)
+        model._load_state_dict(model_path)
     return model
