@@ -1087,7 +1087,7 @@ def faster_vit_3_224(pretrained=False, **kwargs):
 @register_model
 def faster_vit_4_224(pretrained=False, **kwargs):
     depths = kwargs.pop("depths", [3, 3, 12, 5])
-    num_heads = kwargs.pop("num_heads", [2, 4, 8, 16])
+    num_heads = kwargs.pop("num_heads", [4, 8, 16, 32])
     window_size = kwargs.pop("window_size", [7, 7, 7, 7])
     ct_size = kwargs.pop("ct_size", 2)
     dim = kwargs.pop("dim", 196)
