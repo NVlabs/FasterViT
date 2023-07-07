@@ -866,7 +866,7 @@ class FasterViT(nn.Module):
                  ct_size,
                  mlp_ratio,
                  num_heads,
-                 resolution=[224,224],
+                 resolution=[224, 224],
                  drop_path_rate=0.2,
                  in_chans=3,
                  num_classes=1000,
@@ -877,7 +877,7 @@ class FasterViT(nn.Module):
                  layer_scale=None,
                  layer_scale_conv=None,
                  layer_norm_last=False,
-                 hat=None,
+                 hat=[False, False, True, False],
                  do_propagation=False,
                  **kwargs):
         """
@@ -993,6 +993,7 @@ def faster_vit_0_any_res(pretrained=False, **kwargs):
     resolution = kwargs.pop("resolution", [576, 960])
     drop_path_rate = kwargs.pop("drop_path_rate", 0.2)
     model_path = kwargs.pop("model_path", "/tmp/faster_vit_0.pth.tar")
+    hat = kwargs.pop("hat", [False, False, True, False])
     model = FasterViT(depths=depths,
                       num_heads=num_heads,
                       window_size=window_size,
@@ -1002,6 +1003,7 @@ def faster_vit_0_any_res(pretrained=False, **kwargs):
                       mlp_ratio=mlp_ratio,
                       resolution=resolution,
                       drop_path_rate=drop_path_rate,
+                      hat=hat,
                       **kwargs)
     model.default_cfg = default_cfgs['faster_vit_0_any_res']
     if pretrained:
@@ -1025,6 +1027,7 @@ def faster_vit_1_any_res(pretrained=False, **kwargs):
     resolution = kwargs.pop("resolution", [576, 960])
     drop_path_rate = kwargs.pop("drop_path_rate", 0.2)
     model_path = kwargs.pop("model_path", "/tmp/faster_vit_1.pth.tar")
+    hat = kwargs.pop("hat", [False, False, True, False])
     model = FasterViT(depths=depths,
                       num_heads=num_heads,
                       window_size=window_size,
@@ -1034,6 +1037,7 @@ def faster_vit_1_any_res(pretrained=False, **kwargs):
                       mlp_ratio=mlp_ratio,
                       resolution=resolution,
                       drop_path_rate=drop_path_rate,
+                      hat=hat,
                       **kwargs)
     model.default_cfg = default_cfgs['faster_vit_1_any_res']
     if pretrained:
@@ -1057,6 +1061,7 @@ def faster_vit_2_any_res(pretrained=False, **kwargs):
     resolution = kwargs.pop("resolution", [541, 960])
     drop_path_rate = kwargs.pop("drop_path_rate", 0.2)
     model_path = kwargs.pop("model_path", "/tmp/faster_vit_2.pth.tar")
+    hat = kwargs.pop("hat", [False, False, True, False])
     model = FasterViT(depths=depths,
                       num_heads=num_heads,
                       window_size=window_size,
@@ -1066,6 +1071,7 @@ def faster_vit_2_any_res(pretrained=False, **kwargs):
                       mlp_ratio=mlp_ratio,
                       resolution=resolution,
                       drop_path_rate=drop_path_rate,
+                      hat=hat
                       **kwargs)
     model.default_cfg = default_cfgs['faster_vit_2_any_res']
     if pretrained:
@@ -1090,6 +1096,7 @@ def faster_vit_3_any_res(pretrained=False, **kwargs):
     drop_path_rate = kwargs.pop("drop_path_rate", 0.3)
     layer_scale = kwargs.pop("layer_scale", 1e-5)
     model_path = kwargs.pop("model_path", "/tmp/faster_vit_3.pth.tar")
+    hat = kwargs.pop("hat", [False, False, True, False])
     model = FasterViT(depths=depths,
                       num_heads=num_heads,
                       window_size=window_size,
@@ -1102,6 +1109,7 @@ def faster_vit_3_any_res(pretrained=False, **kwargs):
                       layer_scale=layer_scale,
                       layer_scale_conv=None,
                       do_propagation=True,
+                      hat=hat,
                       **kwargs)
     model.default_cfg = default_cfgs['faster_vit_3_any_res']
     if pretrained:
@@ -1126,6 +1134,7 @@ def faster_vit_4_any_res(pretrained=False, **kwargs):
     drop_path_rate = kwargs.pop("drop_path_rate", 0.3)
     layer_scale = kwargs.pop("layer_scale", 1e-5)
     model_path = kwargs.pop("model_path", "/tmp/faster_vit_4.pth.tar")
+    hat = kwargs.pop("hat", [False, False, True, False])
     model = FasterViT(depths=depths,
                       num_heads=num_heads,
                       window_size=window_size,
@@ -1139,6 +1148,7 @@ def faster_vit_4_any_res(pretrained=False, **kwargs):
                       layer_scale_conv=None,
                       layer_norm_last=False,
                       do_propagation=True,
+                      hat=hat,
                       **kwargs)
     model.default_cfg = default_cfgs['faster_vit_4_any_res']
     if pretrained:
@@ -1163,6 +1173,7 @@ def faster_vit_5_any_res(pretrained=False, **kwargs):
     drop_path_rate = kwargs.pop("drop_path_rate", 0.3)
     layer_scale = kwargs.pop("layer_scale", 1e-5)
     model_path = kwargs.pop("model_path", "/tmp/faster_vit_5.pth.tar")
+    hat = kwargs.pop("hat", [False, False, True, False])
     model = FasterViT(depths=depths,
                       num_heads=num_heads,
                       window_size=window_size,
@@ -1176,6 +1187,7 @@ def faster_vit_5_any_res(pretrained=False, **kwargs):
                       layer_scale_conv=None,
                       layer_norm_last=False,
                       do_propagation=True,
+                      hat=hat,
                       **kwargs)
     model.default_cfg = default_cfgs['faster_vit_5_any_res']
     if pretrained:
@@ -1200,6 +1212,7 @@ def faster_vit_6_any_res(pretrained=False, **kwargs):
     drop_path_rate = kwargs.pop("drop_path_rate", 0.5)
     layer_scale = kwargs.pop("layer_scale", 1e-5)
     model_path = kwargs.pop("model_path", "/tmp/faster_vit_6.pth.tar")
+    hat = kwargs.pop("hat", [False, False, True, False])
     model = FasterViT(depths=depths,
                       num_heads=num_heads,
                       window_size=window_size,
@@ -1213,6 +1226,7 @@ def faster_vit_6_any_res(pretrained=False, **kwargs):
                       layer_scale_conv=None,
                       layer_norm_last=False,
                       do_propagation=True,
+                      hat=hat,
                       **kwargs)
     model.default_cfg = default_cfgs['faster_vit_6_any_res']
     if pretrained:
