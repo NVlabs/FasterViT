@@ -29,6 +29,9 @@ cross-window carrier tokens.
 
 ![teaser](./fastervit/assets/hierarchial_attn.png)
 
+Note: Please use the [**latest NVIDIA TensorRT release**](https://docs.nvidia.com/deeplearning/tensorrt/container-release-notes/index.html) to enjoy the benefits of optimized FasterViT ops. 
+
+
 ## Quick Start
 
 We can import pre-trained FasterViT models with **1 line of code**. First, FasterViT can be simply installed by:
@@ -89,7 +92,7 @@ We can simply test the model by passing a dummy input image. The output is the l
 ## 💥 News 💥
 - **[07.06.2023]** FasterViT checkpoints are now also accecible in [HuggingFace](https://huggingface.co/ahatamiz/FasterViT/tree/main) !
 - **[07.04.2023]** 🔥🔥 ImageNet pretrained FasterViT models can now be imported with **1 line of code**. Please install the latest FasterViT pip package to use this functionality (also supports Any-resolution FasterViT models).
-- **[06.30.2023]** 🔥 We have further improved the [TensorRT](https://developer.nvidia.com/tensorrt-getting-started) throughput of FasterViT models by 10-15% on average across different models.  
+- **[06.30.2023]** 🔥 We have further improved the [TensorRT](https://developer.nvidia.com/tensorrt-getting-started) throughput of FasterViT models by 10-15% on average across different models. Please use the [**latest NVIDIA TensorRT release**](https://docs.nvidia.com/deeplearning/tensorrt/container-release-notes/index.html) to use these throughput performance gains. 
 - **[06.29.2023]** Any-resolution FasterViT model can now be intitialized from pre-trained ImageNet resolution (224 x 244) models.
 - **[06.18.2023]** We have released the FasterViT [pip package](https://pypi.org/project/fastervit/) !
 - **[06.17.2023]** 🔥 [Any-resolution FasterViT](./fastervit/models/faster_vit_any_res.py)  model is now available ! the model can be used for variety of applications such as detection and segmentation or high-resolution fine-tuning with arbitrary input image resolutions.
