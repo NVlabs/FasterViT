@@ -4,7 +4,7 @@ Official PyTorch implementation of [**FasterViT: Fast Vision Transformers with H
 
 [Ali Hatamizadeh](https://research.nvidia.com/person/ali-hatamizadeh),
 [Greg Heinrich](https://developer.nvidia.com/blog/author/gheinrich/),
-[Hongxu (Danny) Yin](https://scholar.princeton.edu/hongxu),
+[Hongxu (Danny) Yin](https://hongxu-yin.github.io/),
 [Andrew Tao](https://developer.nvidia.com/blog/author/atao/),
 [Jose M. Alvarez](https://alvarezlopezjosem.github.io/),
 [Jan Kautz](https://jankautz.com/), 
