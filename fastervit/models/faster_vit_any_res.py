@@ -1071,7 +1071,7 @@ def faster_vit_2_any_res(pretrained=False, **kwargs):
                       mlp_ratio=mlp_ratio,
                       resolution=resolution,
                       drop_path_rate=drop_path_rate,
-                      hat=hat
+                      hat=hat,
                       **kwargs)
     model.default_cfg = default_cfgs['faster_vit_2_any_res']
     if pretrained:
