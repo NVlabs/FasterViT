@@ -339,7 +339,7 @@ pip install -r requirements.txt
 
 
 ## Third-party Extentions
-We always welcome third-party extentions/implementations and usage for other purposes. If you would like your work to be listed in this repository, please raise and issue and provide us with detailed information.  
+We always welcome third-party extentions/implementations and usage for other purposes. If you would like your work to be listed in this repository, please raise an issue and provide us with detailed information.  
 
 ## Citation
 
