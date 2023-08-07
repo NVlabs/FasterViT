@@ -91,7 +91,8 @@ We can simply test the model by passing a dummy input image. The output is the l
 ```
 
 ## 💥 News 💥
-- **[07.20.2023]** We have moved FasterViT checkpoints to official NVIDIA FasterViT [HuggingFace](https://huggingface.co/nvidia/FasterViT) page. Please upgrade to the latest pip package to use these pre-trained weights. 
+- **[08.06.2023]** Please upgrade to the latest pip package to use these pre-trained weights. 
+- **[07.20.2023]** We have created official NVIDIA FasterViT [HuggingFace](https://huggingface.co/nvidia/FasterViT) page.
 - **[07.06.2023]** FasterViT checkpoints are now also accecible in HuggingFace!
 - **[07.04.2023]** 🔥🔥 ImageNet pretrained FasterViT models can now be imported with **1 line of code**. Please install the latest FasterViT pip package to use this functionality (also supports Any-resolution FasterViT models).
 - **[06.30.2023]** 🔥 We have further improved the [TensorRT](https://developer.nvidia.com/tensorrt-getting-started) throughput of FasterViT models by 10-15% on average across different models. Please use the [**latest NVIDIA TensorRT release**](https://docs.nvidia.com/deeplearning/tensorrt/container-release-notes/index.html) to use these throughput performance gains. 
@@ -108,8 +109,7 @@ We can simply test the model by passing a dummy input image. The output is the l
 - [x] FasterViT pip-package release
 - [x] Add capablity to initialize any-resolution FasterViT from ImageNet-pretrained weights. 
 - [ ] ImageNet-21K pre-trained models
-- [ ] Detection code (DINO) + models
-- [ ] Segmentation code + models
+- [ ] Detection code + models
 
 --- 
 
@@ -367,4 +367,3 @@ For license information regarding the ImageNet dataset, please see the [ImageNet
 
 ## Acknowledgement
 This repository is built on top of the [timm](https://github.com/huggingface/pytorch-image-models) repository. We thank [Ross Wrightman](https://rwightman.com/) for creating and maintaining this high-quality library.  
-
