@@ -16,7 +16,7 @@ For business inquiries, please visit our website and submit the form: [NVIDIA Re
 --- 
 
 FasterViT achieves a new SOTA Pareto-front in
-terms of Top-1 accuracy and image throughput without extra training data !
+terms of Top-1 accuracy and throughput without extra training data !
 
 <p align="center">
 <img src="https://github.com/NVlabs/FasterViT/assets/26806394/253d1a2e-b5f5-4a9b-a362-6cdd16bfccc1" width=62% height=62% 
