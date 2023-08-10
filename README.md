@@ -39,7 +39,7 @@ We can import pre-trained FasterViT models with **1 line of code**. Firstly, Fas
 ```bash
 pip install fastervit
 ```
-Note: Please upgrate the package to ```fastervit>=0.9.3``` if you have already installed the package to use the pretrained weights. 
+Note: Please upgrate the package to ```fastervit>=0.9.4``` if you have already installed the package to use the pretrained weights. 
 
 A pretrained FasterViT model with default hyper-parameters can be created as in the following:
 
