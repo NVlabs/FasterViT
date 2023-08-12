@@ -600,7 +600,7 @@ class HAT(nn.Module):
         self.square = True if sr_ratio[0] == sr_ratio[1] else False
         # number of carrier tokens per every window
         self.do_sr_hat = True if ((sr_ratio[0] > 1) or (sr_ratio[1] > 1)) else False
-        cr_tokens_per_window = (2**ct_size)**2 if self.do_sr_hat else 0
+        cr_tokens_per_window = ct_size**2 if self.do_sr_hat else 0
 
         # total number of carrier tokens
         cr_tokens_total = cr_tokens_per_window*sr_ratio[0]*sr_ratio[1]
