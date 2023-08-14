@@ -21,10 +21,10 @@ from functools import partial
 import torch
 import torch.nn as nn
 import torch.nn.parallel
-from models.faster_vit import *
-from models.gcvit import *
+#from models.faster_vit import *
+#from models.gcvit import *
 from timm.data import create_dataset, create_loader, resolve_data_config, RealLabelsImagenet
-from timm.layers import apply_test_time_pool, set_fast_norm
+#from timm.layers import apply_test_time_pool, set_fast_norm
 from timm.models import create_model, load_checkpoint, is_model, list_models
 from timm.utils import accuracy, AverageMeter, natural_key, setup_default_logging, set_jit_fuser, \
     decay_batch_step, check_batch_size_retry, ParseKwargs
@@ -192,15 +192,19 @@ def validate(args):
     elif args.input_size is not None:
         in_chans = args.input_size[0]
 
-    model = create_model(
-        args.model,
-        pretrained=args.pretrained,
-        num_classes=args.num_classes,
-        in_chans=in_chans,
-        global_pool=args.gp,
-        scriptable=args.torchscript,
-        **args.model_kwargs,
-    )
+    from fastervit import create_model
+    model = create_model('faster_vit_0_224', 
+                          pretrained=True,
+                          model_path="/tmp/faster_vit_0.pth.tar")
+    # model = create_model(
+    #     args.model,
+    #     pretrained=args.pretrained,
+    #     num_classes=args.num_classes,
+    #     in_chans=in_chans,
+    #     global_pool=args.gp,
+    #     scriptable=args.torchscript,
+    #     **args.model_kwargs,
+    # )
     if args.num_classes is None:
         assert hasattr(model, 'num_classes'), 'Model must have `num_classes` attr if not set on cmd line/config.'
         args.num_classes = model.num_classes
@@ -244,8 +248,9 @@ def validate(args):
         model = torch.nn.DataParallel(model, device_ids=list(range(args.num_gpu)))
 
     criterion = nn.CrossEntropyLoss().to(device)
+    DATA_PATH="/home/ali/Desktop/data_local/ImageNet-Validation/val"
 
-    root_dir = args.data or args.data_dir
+    root_dir = args.data or args.data_dir or DATA_PATH
     dataset = create_dataset(
         root=root_dir,
         name=args.dataset,
