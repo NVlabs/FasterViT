@@ -31,6 +31,17 @@ cross-window carrier tokens.
 
 Note: Please use the [**latest NVIDIA TensorRT release**](https://docs.nvidia.com/deeplearning/tensorrt/container-release-notes/index.html) to enjoy the benefits of optimized FasterViT ops. 
 
+## 💥 News 💥
+- **[08.15.2023]** 🔥🔥 We have added ImageNet-21K pre-trained models for various resolutions !!  
+- **[07.20.2023]** We have created official NVIDIA FasterViT [HuggingFace](https://huggingface.co/nvidia/FasterViT) page.
+- **[07.06.2023]** FasterViT checkpoints are now also accecible in HuggingFace!
+- **[07.04.2023]** 🔥🔥 ImageNet pretrained FasterViT models can now be imported with **1 line of code**. Please install the latest FasterViT pip package to use this functionality (also supports Any-resolution FasterViT models).
+- **[06.30.2023]** 🔥🔥 We have further improved the [TensorRT](https://developer.nvidia.com/tensorrt-getting-started) throughput of FasterViT models by 10-15% on average across different models. Please use the [**latest NVIDIA TensorRT release**](https://docs.nvidia.com/deeplearning/tensorrt/container-release-notes/index.html) to use these throughput performance gains. 
+- **[06.29.2023]** Any-resolution FasterViT model can now be intitialized from pre-trained ImageNet resolution (224 x 244) models.
+- **[06.18.2023]** We have released the FasterViT [pip package](https://pypi.org/project/fastervit/) !
+- **[06.17.2023]** 🔥 [Any-resolution FasterViT](./fastervit/models/faster_vit_any_res.py)  model is now available ! the model can be used for variety of applications such as detection and segmentation or high-resolution fine-tuning with arbitrary input image resolutions.
+- **[06.09.2023]** 🔥🔥 We have released source code and ImageNet-1K FasterViT-models !
+
 
 ## Quick Start
 
@@ -90,16 +101,6 @@ We can simply test the model by passing a dummy input image. The output is the l
 >>> output = model(image) # torch.Size([1, 1000])
 ```
 
-## 💥 News 💥
-- **[08.06.2023]** Please upgrade to the latest [FasterViT pip package](https://pypi.org/project/fastervit/) to use the pre-trained weights. 
-- **[07.20.2023]** We have created official NVIDIA FasterViT [HuggingFace](https://huggingface.co/nvidia/FasterViT) page.
-- **[07.06.2023]** FasterViT checkpoints are now also accecible in HuggingFace!
-- **[07.04.2023]** 🔥🔥 ImageNet pretrained FasterViT models can now be imported with **1 line of code**. Please install the latest FasterViT pip package to use this functionality (also supports Any-resolution FasterViT models).
-- **[06.30.2023]** 🔥🔥 We have further improved the [TensorRT](https://developer.nvidia.com/tensorrt-getting-started) throughput of FasterViT models by 10-15% on average across different models. Please use the [**latest NVIDIA TensorRT release**](https://docs.nvidia.com/deeplearning/tensorrt/container-release-notes/index.html) to use these throughput performance gains. 
-- **[06.29.2023]** Any-resolution FasterViT model can now be intitialized from pre-trained ImageNet resolution (224 x 244) models.
-- **[06.18.2023]** We have released the FasterViT [pip package](https://pypi.org/project/fastervit/) !
-- **[06.17.2023]** 🔥 [Any-resolution FasterViT](./fastervit/models/faster_vit_any_res.py)  model is now available ! the model can be used for variety of applications such as detection and segmentation or high-resolution fine-tuning with arbitrary input image resolutions.
-- **[06.09.2023]** 🔥🔥 We have released source code and ImageNet-1K FasterViT-models !
 
 
 ## Catalog
@@ -108,7 +109,7 @@ We can simply test the model by passing a dummy input image. The output is the l
 - [x] Any-resolution FasterViT
 - [x] FasterViT pip-package release
 - [x] Add capablity to initialize any-resolution FasterViT from ImageNet-pretrained weights. 
-- [ ] ImageNet-21K pre-trained models
+- [x] ImageNet-21K pre-trained models
 - [ ] Detection code + models
 
 --- 
@@ -209,8 +210,55 @@ We can simply test the model by passing a dummy input image. The output is the l
 
 </table>
 
+### ImageNet-21K
+**FasterViT ImageNet-21K > ImageNet-1K Fine-tuned Models**
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Acc@1(%)</th>
+    <th>Acc@5(%)</th>
+    <th>Resolution</th>
+    <th>#Params(M)</th>
+    <th>FLOPs(G)</th>
+    <th>Download</th>
+  </tr>
+
+<tr>
+    <td>FasterViT-4-21K-224</td>
+    <td>86.6</td>
+    <td>97.8</td>
+    <td>224x224</td>
+    <td>271.9</td>
+    <td>40.8</td>
+    <td><a href="https://huggingface.co/ahatamiz/FasterViT/resolve/main/fastervit_4_21k_224_w14.pth.tar">model</a></td>
+</tr>
+
+<tr>
+    <td>FasterViT-4-21K-384</td>
+    <td>87.6</td>
+    <td>98.3</td>
+    <td>384x384</td>
+    <td>271.9</td>
+    <td>120.1</td>
+    <td><a href="https://huggingface.co/ahatamiz/FasterViT/resolve/main/fastervit_4_21k_384_w24.pth.tar">model</a></td>
+</tr>
+
+<tr>
+    <td>FasterViT-4-21K-512</td>
+    <td>87.8</td>
+    <td>98.4</td>
+    <td>512x512</td>
+    <td>271.9</td>
+    <td>213.5</td>
+    <td><a href="https://huggingface.co/ahatamiz/FasterViT/resolve/main/fastervit_4_21k_512_w32.pth.tar">model</a></td>
+</tr>
+
+</table>
+
 
 ### Robustness (ImageNet-A - ImageNet-R - ImageNet-V2)
+
 
 All models use `crop_pct=0.875`. Results are obtained by running inference on ImageNet-1K pretrained models without finetuning.
 <table>
