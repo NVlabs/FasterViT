@@ -381,7 +381,7 @@ import torch
 import coremltools
 from fastervit import create_model
 
-model = create_model('faster_vit_1_224_plus').eval()
+model = create_model('faster_vit_0_224').eval()
 input_size = 224
 bs_size = 1
 file_name = 'faster_vit_0_224.mlmodel'
