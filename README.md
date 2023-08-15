@@ -211,7 +211,7 @@ We can simply test the model by passing a dummy input image. The output is the l
 </table>
 
 ### ImageNet-21K
-**FasterViT ImageNet-21K > ImageNet-1K Fine-tuned Models**
+**FasterViT ImageNet-21K Pretrained Models (ImageNet-1K Fine-tuned)**
 
 <table>
   <tr>
