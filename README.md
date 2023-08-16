@@ -374,7 +374,7 @@ python onnx_convert --model-name faster_vit_0_any_res --resolution-h 576 --resol
 
 ## CoreML Conversion
 
-To generate FasterViT CoreML models, please install coremltools==5.2.0 and use the following script: 
+To generate FasterViT CoreML models, please install `coremltools==5.2.0` and use the following script: 
 
 ```
 import torch
