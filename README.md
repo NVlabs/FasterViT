@@ -390,7 +390,7 @@ model_jit_trace = torch.jit.trace(model, img)
 model = coremltools.convert(model_jit_trace, inputs=[coremltools.ImageType(shape=img.shape)])
 model.save(file_name)
 ```
-
+It is recommended to benchmark the performance by using [Xcode14](https://developer.apple.com/documentation/xcode-release-notes/xcode-14-release-notes) or newer releases. 
 
 ## Installation
 
