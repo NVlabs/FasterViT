@@ -947,13 +947,17 @@ class FasterViT(nn.Module):
         for level in self.levels:
             x = level(x)
         x = self.norm(x)
+        return x
+    
+    def forward_head(self, x):
         x = self.avgpool(x)
         x = torch.flatten(x, 1)
+        x = self.head(x)
         return x
 
     def forward(self, x):
         x = self.forward_features(x)
-        x = self.head(x)
+        x = self.forward_head(x)
         return x
     
     def _load_state_dict(self, 
