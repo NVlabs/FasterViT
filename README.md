@@ -32,7 +32,7 @@ cross-window carrier tokens.
 Note: Please use the [**latest NVIDIA TensorRT release**](https://docs.nvidia.com/deeplearning/tensorrt/container-release-notes/index.html) to enjoy the benefits of optimized FasterViT ops. 
 
 ## 💥 News 💥
-- **[08.15.2023]** 🔥🔥 We have added ImageNet-21K SOTA pre-trained models for various resolutions !!  
+- **[08.15.2023]** 🔥🔥 We have added ImageNet-21K SOTA pre-trained models for various resolutions !  
 - **[07.20.2023]** We have created official NVIDIA FasterViT [HuggingFace](https://huggingface.co/nvidia/FasterViT) page.
 - **[07.06.2023]** FasterViT checkpoints are now also accecible in HuggingFace!
 - **[07.04.2023]** 🔥🔥 ImageNet pretrained FasterViT models can now be imported with **1 line of code**. Please install the latest FasterViT pip package to use this functionality (also supports Any-resolution FasterViT models).
