@@ -977,7 +977,6 @@ class FasterViT(nn.Module):
         for level in self.levels:
             x = level(x)
         x = self.norm(x)
-        
         return x
     
     def forward_head(self, x):
