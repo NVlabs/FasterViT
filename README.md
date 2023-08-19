@@ -45,7 +45,7 @@ Note: Please use the [**latest NVIDIA TensorRT release**](https://docs.nvidia.co
 
 ## Quick Start
 
-We can import pre-trained FasterViT models with **1 line of code**. Firstly, FasterViT can be simply installed by:
+We can import pre-trained FasterViT models with **1 line of code**. Firstly, FasterViT can be simply installed:
 
 ```bash
 pip install fastervit
