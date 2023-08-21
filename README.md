@@ -32,7 +32,8 @@ cross-window carrier tokens.
 Note: Please use the [**latest NVIDIA TensorRT release**](https://docs.nvidia.com/deeplearning/tensorrt/container-release-notes/index.html) to enjoy the benefits of optimized FasterViT ops. 
 
 ## 💥 News 💥
-- **[08.15.2023]** 🔥🔥 We have added ImageNet-21K SOTA pre-trained models for various resolutions !  
+- **[08.20.2023]** 🔥🔥 We have added 768x768 resolution ImageNet-21K FasterViT-4 model with 87.9% Top-1 accuracy ! 
+- **[08.15.2023]** 🔥🔥 We have added ImageNet-21K SOTA pre-trained models for various resolutions !   
 - **[07.20.2023]** We have created official NVIDIA FasterViT [HuggingFace](https://huggingface.co/nvidia/FasterViT) page.
 - **[07.06.2023]** FasterViT checkpoints are now also accecible in HuggingFace!
 - **[07.04.2023]** 🔥🔥 ImageNet pretrained FasterViT models can now be imported with **1 line of code**. Please install the latest FasterViT pip package to use this functionality (also supports Any-resolution FasterViT models).
@@ -252,6 +253,16 @@ We can simply test the model by passing a dummy input image. The output is the l
     <td>271.9</td>
     <td>213.5</td>
     <td><a href="https://huggingface.co/ahatamiz/FasterViT/resolve/main/fastervit_4_21k_512_w32.pth.tar">model</a></td>
+</tr>
+
+<tr>
+    <td>FasterViT-4-21K-768</td>
+    <td>87.9</td>
+    <td>98.5</td>
+    <td>768x768</td>
+    <td>271.9</td>
+    <td>480.4</td>
+    <td><a href="https://huggingface.co/ahatamiz/FasterViT/resolve/main/fastervit_4_21k_768_w48.pth.tar">model</a></td>
 </tr>
 
 </table>

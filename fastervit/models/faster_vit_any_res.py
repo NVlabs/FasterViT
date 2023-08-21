@@ -73,6 +73,10 @@ default_cfgs = {
     'faster_vit_4_21k_512_any_res': _cfg(url='https://huggingface.co/ahatamiz/FasterViT/resolve/main/fastervit_4_21k_512_w32.pth.tar',
                                          crop_pct=1.0,
                                          input_size=(3, 512, 512),
+                                         crop_mode='squash'),
+    'faster_vit_4_21k_768_any_res': _cfg(url='https://huggingface.co/ahatamiz/FasterViT/resolve/main/fastervit_4_21k_768_w48.pth.tar',
+                                         crop_pct=0.93,
+                                         input_size=(3, 768, 768),
                                          crop_mode='squash'),                                 
 }
 
@@ -1281,7 +1285,7 @@ def faster_vit_6_any_res(pretrained=False, **kwargs):
 def faster_vit_4_21k_224_any_res(pretrained=False, **kwargs):
     depths = kwargs.pop("depths", [3, 3, 12, 5])
     num_heads = kwargs.pop("num_heads", [4, 8, 16, 32])
-    window_size = kwargs.pop("window_size", [7, 7, 7, 7])
+    window_size = kwargs.pop("window_size", [7, 7, 14, 7])
     ct_size = kwargs.pop("ct_size", 2)
     dim = kwargs.pop("dim", 196)
     in_dim = kwargs.pop("in_dim", 64)
@@ -1290,7 +1294,7 @@ def faster_vit_4_21k_224_any_res(pretrained=False, **kwargs):
     drop_path_rate = kwargs.pop("drop_path_rate", 0.3)
     layer_scale = kwargs.pop("layer_scale", 1e-5)
     model_path = kwargs.pop("model_path", "/tmp/fastervit_4_21k_224_w14.pth.tar")
-    hat = kwargs.pop("hat", [False, False, True, False])
+    hat = kwargs.pop("hat", [False, False, False, False])
     pretrained_cfg = resolve_pretrained_cfg('faster_vit_4_21k_224_any_res').to_dict()
     _update_default_kwargs(pretrained_cfg, kwargs, kwargs_filter=None)
     model = FasterViT(depths=depths,
@@ -1323,7 +1327,7 @@ def faster_vit_4_21k_224_any_res(pretrained=False, **kwargs):
 def faster_vit_4_21k_384_any_res(pretrained=False, **kwargs):
     depths = kwargs.pop("depths", [3, 3, 12, 5])
     num_heads = kwargs.pop("num_heads", [4, 8, 16, 32])
-    window_size = kwargs.pop("window_size", [7, 7, 7, 7])
+    window_size = kwargs.pop("window_size", [7, 7, 24, 12)
     ct_size = kwargs.pop("ct_size", 2)
     dim = kwargs.pop("dim", 196)
     in_dim = kwargs.pop("in_dim", 64)
@@ -1332,7 +1336,7 @@ def faster_vit_4_21k_384_any_res(pretrained=False, **kwargs):
     drop_path_rate = kwargs.pop("drop_path_rate", 0.3)
     layer_scale = kwargs.pop("layer_scale", 1e-5)
     model_path = kwargs.pop("model_path", "/tmp/fastervit_4_21k_384_w24.pth.tar")
-    hat = kwargs.pop("hat", [False, False, True, False])
+    hat = kwargs.pop("hat", [False, False, False, False])
     pretrained_cfg = resolve_pretrained_cfg('faster_vit_4_21k_384_any_res').to_dict()
     _update_default_kwargs(pretrained_cfg, kwargs, kwargs_filter=None)
     model = FasterViT(depths=depths,
@@ -1365,7 +1369,7 @@ def faster_vit_4_21k_384_any_res(pretrained=False, **kwargs):
 def faster_vit_4_21k_512_any_res(pretrained=False, **kwargs):
     depths = kwargs.pop("depths", [3, 3, 12, 5])
     num_heads = kwargs.pop("num_heads", [4, 8, 16, 32])
-    window_size = kwargs.pop("window_size", [7, 7, 7, 7])
+    window_size = kwargs.pop("window_size", [7, 7, 32, 16])
     ct_size = kwargs.pop("ct_size", 2)
     dim = kwargs.pop("dim", 196)
     in_dim = kwargs.pop("in_dim", 64)
@@ -1374,8 +1378,50 @@ def faster_vit_4_21k_512_any_res(pretrained=False, **kwargs):
     drop_path_rate = kwargs.pop("drop_path_rate", 0.3)
     layer_scale = kwargs.pop("layer_scale", 1e-5)
     model_path = kwargs.pop("model_path", "/tmp/fastervit_4_21k_512_w32.pth.tar")
-    hat = kwargs.pop("hat", [False, False, True, False])
+    hat = kwargs.pop("hat", [False, False, False, False])
     pretrained_cfg = resolve_pretrained_cfg('faster_vit_4_21k_512_any_res').to_dict()
+    _update_default_kwargs(pretrained_cfg, kwargs, kwargs_filter=None)
+    model = FasterViT(depths=depths,
+                      num_heads=num_heads,
+                      window_size=window_size,
+                      ct_size=ct_size,
+                      dim=dim,
+                      in_dim=in_dim,
+                      mlp_ratio=mlp_ratio,
+                      resolution=resolution,
+                      drop_path_rate=drop_path_rate,
+                      layer_scale=layer_scale,
+                      layer_scale_conv=None,
+                      layer_norm_last=False,
+                      do_propagation=True,
+                      hat=hat,
+                      **kwargs)
+    model.pretrained_cfg = pretrained_cfg
+    model.default_cfg = model.pretrained_cfg
+    if pretrained:
+        if not Path(model_path).is_file():
+            url = model.default_cfg['url']
+            torch.hub.download_url_to_file(url=url, dst=model_path)
+        model._load_state_dict(model_path)
+    return model
+
+
+@register_pip_model
+@register_model
+def faster_vit_4_21k_768_any_res(pretrained=False, **kwargs):
+    depths = kwargs.pop("depths", [3, 3, 12, 5])
+    num_heads = kwargs.pop("num_heads", [4, 8, 16, 32])
+    window_size = kwargs.pop("window_size", [7, 7, 48, 24])
+    ct_size = kwargs.pop("ct_size", 2)
+    dim = kwargs.pop("dim", 196)
+    in_dim = kwargs.pop("in_dim", 64)
+    mlp_ratio = kwargs.pop("mlp_ratio", 4)
+    resolution = kwargs.pop("resolution", [576, 960])
+    drop_path_rate = kwargs.pop("drop_path_rate", 0.3)
+    layer_scale = kwargs.pop("layer_scale", 1e-5)
+    model_path = kwargs.pop("model_path", "/tmp/fastervit_4_21k_768_w48.pth.tar")
+    hat = kwargs.pop("hat", [False, False, False, False])
+    pretrained_cfg = resolve_pretrained_cfg('faster_vit_4_21k_768_any_res').to_dict()
     _update_default_kwargs(pretrained_cfg, kwargs, kwargs_filter=None)
     model = FasterViT(depths=depths,
                       num_heads=num_heads,
