@@ -92,7 +92,7 @@ model with input resolution of 576 x 960, window sizes of 12 and 6 in 3rd and 4t
 ```
 Note that the above model is intiliazed from the original ImageNet pre-trained FasterViT with original resolution of 224 x 224. As a result, missing keys and mis-matches could be expected since we are addign new layers (e.g. addition of new carrier tokens, etc.) 
 
-We can simply test the model by passing a dummy input image. The output is the logits:
+We can test the model by passing a dummy input image. The output is the logits:
 
 ```python
 >>> import torch
