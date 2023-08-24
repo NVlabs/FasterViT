@@ -32,7 +32,7 @@ cross-window carrier tokens.
 Note: Please use the [**latest NVIDIA TensorRT release**](https://docs.nvidia.com/deeplearning/tensorrt/container-release-notes/index.html) to enjoy the benefits of optimized FasterViT ops. 
 
 ## 💥 News 💥
-- **[08.24.2023]** 🔥🔥 FasterViT Keras models with pre-trained weights are available in [keras_cv_attention_models](https://github.com/leondgarse/keras_cv_attention_models/tree/main/keras_cv_attention_models/fastervit) !  
+- **[08.24.2023]** 🔥🔥 FasterViT Keras models with pre-trained weights published in [keras_cv_attention_models](https://github.com/leondgarse/keras_cv_attention_models/tree/main/keras_cv_attention_models/fastervit) !  
 - **[08.20.2023]** 🔥🔥 We have added ImageNet-21K SOTA pre-trained models for various resolutions !   
 - **[07.20.2023]** We have created official NVIDIA FasterViT [HuggingFace](https://huggingface.co/nvidia/FasterViT) page.
 - **[07.06.2023]** FasterViT checkpoints are now also accecible in HuggingFace!
