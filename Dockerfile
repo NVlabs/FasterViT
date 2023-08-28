@@ -4,6 +4,6 @@ RUN pip install pyyaml
 RUN pip install yacs
 RUN pip install termcolor
 RUN pip install opencv-python
-RUN pip install timm==0.6.12
+RUN pip install timm==0.9.5
 WORKDIR /app
 COPY . /app
