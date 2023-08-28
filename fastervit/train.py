@@ -28,8 +28,7 @@ import torchvision.utils
 from torch.nn.parallel import DistributedDataParallel as NativeDDP
 
 from timm.data import ImageDataset, create_dataset, create_loader, resolve_data_config, Mixup, FastCollateMixup, AugMixDataset
-from timm.models import create_model, safe_model_name, resume_checkpoint, load_checkpoint,\
-    convert_splitbn_model, model_parameters
+from timm.models import create_model, safe_model_name, resume_checkpoint, load_checkpoint, model_parameters
 from timm import utils
 from timm.loss import JsdCrossEntropy, BinaryCrossEntropy, SoftTargetCrossEntropy, BinaryCrossEntropy,\
     LabelSmoothingCrossEntropy
@@ -436,7 +435,8 @@ def main():
         scriptable=args.torchscript,
         checkpoint_path=args.initial_checkpoint,
         attn_drop_rate=args.attn_drop_rate,
-        drop_rate=args.drop_rate)
+        drop_rate=args.drop_rate,
+        drop_path_rate=args.drop_path)
     
     if args.bfloat:
         args.dtype = torch.bfloat16
