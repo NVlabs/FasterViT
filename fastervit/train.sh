@@ -7,7 +7,7 @@ EXP=Test
 LR=8e-4
 WD=0.05
 WR_LR=1e-6
-DR=0.3
+DR=0.38
 MESA=0.25
 
 torchrun --nproc_per_node=1 train.py --mesa ${MESA} --input-size 3 224 224 --crop-pct=0.875 \
