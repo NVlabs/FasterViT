@@ -55,7 +55,7 @@ pip install fastervit
 ```
 Note: Please upgrate the package to ```fastervit>=0.9.8``` if you have already installed the package to use the pretrained weights. 
 
-A pretrained FasterViT model with default hyper-parameters can be created as in the following:
+A pretrained FasterViT model with default hyper-parameters can be created as in:
 
 ```python
 >>> from fastervit import create_model
