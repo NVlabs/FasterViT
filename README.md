@@ -356,6 +356,15 @@ All models use `crop_pct=0.875`. Results are obtained by running inference on Im
 </table>
 
 A, R and V2 denote ImageNet-A, ImageNet-R and ImageNet-V2 respectively. 
+
+## Installation
+
+We provide a [docker file](./Dockerfile). In addition, assuming that a recent [PyTorch](https://pytorch.org/get-started/locally/) package is installed, the dependencies can be installed by running:
+
+```bash
+pip install -r requirements.txt
+```
+
 ## Training
 
 Please see [TRAINING.md](TRAINING.md) for detailed training instructions of all models. 
@@ -379,37 +388,17 @@ Here `--model` is the FasterViT variant (e.g. `faster_vit_0_224_1k`), `--checkpo
 We provide ONNX conversion script to enable dynamic batch size inference. For instance, to generate ONNX model for `faster_vit_0_any_res` with resolution 576 x 960 and ONNX opset number 17, the following can be used. 
 
 ```bash 
-python onnx_convert --model-name faster_vit_0_any_res --resolution-h 576 --resolution-w 960 --onnx-opset 17
+python onnx_convert --model-name faster_vit_0_any_res --simplify --resolution-h 576 --resolution-w 960 --onnx-opset 17
 
 ```
 
 ## CoreML Conversion
 
-To generate FasterViT CoreML models, please install `coremltools==5.2.0` and use the following script: 
+To generate FasterViT CoreML models, please install `coremltools==5.2.0` and use our provided [script](./coreml_convert.py). 
 
-```
-import torch
-import coremltools
-from fastervit import create_model
-
-model = create_model('faster_vit_0_224').eval()
-input_size = 224
-bs_size = 1
-file_name = 'faster_vit_0_224.mlmodel'
-img = torch.randn((bs_size, 3, input_size, input_size), dtype=torch.float32)
-model_jit_trace = torch.jit.trace(model, img)
-model = coremltools.convert(model_jit_trace, inputs=[coremltools.ImageType(shape=img.shape)])
-model.save(file_name)
-```
 It is recommended to benchmark the performance by using [Xcode14](https://developer.apple.com/documentation/xcode-release-notes/xcode-14-release-notes) or newer releases. 
 
-## Installation
 
-The dependencies can be installed by running:
-
-```bash
-pip install -r requirements.txt
-```
 
 ## Star History
 
