@@ -13,6 +13,7 @@ import onnx
 import os
 import argparse
 import onnx_graphsurgeon as gs
+from polygraphy.backend.onnx import fold_constants
 from fastervit.models.faster_vit import *
 from fastervit.models.faster_vit_any_res import *
 
@@ -23,6 +24,7 @@ parser.add_argument("--pretrained_path",type=str, default="")
 parser.add_argument('--onnx-opset', type=int, default=17)
 parser.add_argument('--resolution-h', type=int, default=224)
 parser.add_argument('--resolution-w', type=int, default=224)
+parser.add_argument('--simplify', action='store_true', help="Further simplify the ONNX model with polygraphy and onnxsim")
 args = parser.parse_args()
 
 def main():
@@ -64,7 +66,7 @@ def export_onnx(
     batch_first: bool = True,
     is_training: bool = False,
     onnx_file_name: str ="",
-):
+) -> None:
     f = io.BytesIO()
     torch.onnx.export(
         model,
@@ -85,19 +87,80 @@ def export_onnx(
     onnx_model = onnx.load_model_from_string(f.getvalue(), onnx.ModelProto)
     f.close()
     onnx_model = onnx.shape_inference.infer_shapes(onnx_model)
-
-    # Constant folding to simplify the ONNX
-    graph = gs.import_onnx(onnx_model)
-    graph.fold_constants().cleanup()
+    output_path = os.path.join(result_dir, onnx_file_name)
 
     onnx.save(
-        gs.export_onnx(graph),
-        os.path.join(
-            result_dir, onnx_file_name
-        ),
+        onnx_model,
+        output_path,
     )
-    return onnx_model
 
+    if args.simplify:
+        opt = Optimizer(onnx_model)
+        opt.info("Original")
+        opt.cleanup()
+        opt.info("Clean up")
+        opt.fold_constants()
+        opt.info("Fold constant")
+        opt.infer_shapes()
+        opt.info("Shape inference")
+        onnx_polygraphy_opt = opt.cleanup(return_onnx=True)
+        polygraphy_output_path = output_path.replace(".onnx", ".polygraphy.onnx")
+        onnx.save(
+            onnx_polygraphy_opt,
+            polygraphy_output_path
+        )
+
+        # Further optimize model with onnx-simplify
+        from onnxsim import simplify, model_info
+        after_onnxsim_onnx, check = simplify(onnx_polygraphy_opt)
+        assert check, "Simplified ONNX model could not be validated"
+        model_info.print_simplifying_info(onnx_polygraphy_opt, after_onnxsim_onnx)
+        onnxsim_output_path = output_path.replace(".onnx", ".onnxsim.onnx")
+        onnx.save(
+            after_onnxsim_onnx,
+            onnxsim_output_path,
+        )
+
+class Optimizer():
+    def __init__(
+        self,
+        onnx_graph,
+        verbose=False
+    ):
+        self.graph = gs.import_onnx(onnx_graph)
+        self.verbose = verbose
+
+    def info(self, prefix):
+        if self.verbose:
+            print(f"{prefix} .. {len(self.graph.nodes)} nodes, {len(self.graph.tensors().keys())} tensors, {len(self.graph.inputs)} inputs, {len(self.graph.outputs)} outputs")
+
+    def cleanup(self, return_onnx=False):
+        self.graph.cleanup().toposort()
+        if return_onnx:
+            return gs.export_onnx(self.graph)
+
+    def select_outputs(self, keep, names=None):
+        self.graph.outputs = [self.graph.outputs[o] for o in keep]
+        if names:
+            for i, name in enumerate(names):
+                self.graph.outputs[i].name = name
+
+    def fold_constants(self, return_onnx=False):
+        onnx_graph = fold_constants(gs.export_onnx(self.graph), allow_onnxruntime_shape_inference=True)
+        self.graph = gs.import_onnx(onnx_graph)
+        if return_onnx:
+            return onnx_graph
+
+    def infer_shapes(self, return_onnx=False):
+        onnx_graph = gs.export_onnx(self.graph)
+        if onnx_graph.ByteSize() > 2147483648:
+            raise TypeError("ERROR: model size exceeds supported 2GB limit")
+        else:
+            onnx_graph = onnx.shape_inference.infer_shapes(onnx_graph)
+
+        self.graph = gs.import_onnx(onnx_graph)
+        if return_onnx:
+            return onnx_graph
 
 if __name__ == "__main__":
     main()
