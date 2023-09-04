@@ -3,3 +3,4 @@ tensorboardX==2.6.2.2
 onnx==1.14.1
 onnx_graphsurgeon==0.3.27
 onnxruntime==1.15.1
+polygraphy==0.47.1
