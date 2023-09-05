@@ -24,7 +24,7 @@ parser.add_argument("--pretrained_path",type=str, default="")
 parser.add_argument('--onnx-opset', type=int, default=17)
 parser.add_argument('--resolution-h', type=int, default=224)
 parser.add_argument('--resolution-w', type=int, default=224)
-parser.add_argument('--simplify', action='store_true', help="Further simplify the ONNX model with polygraphy and onnxsim")
+parser.add_argument('--simplify', action='store_true', help="Further simplify the ONNX model with polygraphy")
 args = parser.parse_args()
 
 def main():
@@ -108,17 +108,6 @@ def export_onnx(
         onnx.save(
             onnx_polygraphy_opt,
             polygraphy_output_path
-        )
-
-        # Further optimize model with onnx-simplify
-        from onnxsim import simplify, model_info
-        after_onnxsim_onnx, check = simplify(onnx_polygraphy_opt)
-        assert check, "Simplified ONNX model could not be validated"
-        model_info.print_simplifying_info(onnx_polygraphy_opt, after_onnxsim_onnx)
-        onnxsim_output_path = output_path.replace(".onnx", ".onnxsim.onnx")
-        onnx.save(
-            after_onnxsim_onnx,
-            onnxsim_output_path,
         )
 
 class Optimizer():
