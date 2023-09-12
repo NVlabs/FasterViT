@@ -18,10 +18,9 @@ FasterViT achieves a new SOTA Pareto-front in
 terms of Top-1 accuracy and throughput without extra training data !
 
 <p align="center">
-<img src="https://github.com/NVlabs/FasterViT/assets/26806394/b0fc1056-3df8-4573-b3cb-3032eca15343" width=62% height=62% 
+<img src="https://github.com/NVlabs/FasterViT/assets/26806394/6357de9e-5d7f-4e03-8009-2bad1373096c" width=62% height=62% 
 class="center">
 </p>
-
 
 We introduce a new self-attention mechanism, denoted as Hierarchical
 Attention (HAT), that captures both short and long-range information by learning
