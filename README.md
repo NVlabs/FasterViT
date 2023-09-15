@@ -42,7 +42,6 @@ Note: Please use the [**latest NVIDIA TensorRT release**](https://docs.nvidia.co
 - **[06.17.2023]** 🔥 [Any-resolution FasterViT](./fastervit/models/faster_vit_any_res.py)  model is now available ! the model can be used for variety of applications such as detection and segmentation or high-resolution fine-tuning with arbitrary input image resolutions.
 - **[06.09.2023]** 🔥🔥 We have released source code and ImageNet-1K FasterViT-models !
 
-
 ## Quick Start
 
 We can import pre-trained FasterViT models with **1 line of code**. Firstly, FasterViT can be simply installed:
