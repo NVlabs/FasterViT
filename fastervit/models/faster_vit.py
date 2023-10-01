@@ -740,8 +740,8 @@ class TokenInitializer(nn.Module):
 
 class FasterViTLayer(nn.Module):
     """
-    GCViT layer based on: "Hatamizadeh et al.,
-    Global Context Vision Transformers <https://arxiv.org/abs/2206.09959>"
+    FasterViT layer based on: "Hatamizadeh et al.,
+    FasterViT: Fast Vision Transformers with Hierarchical Attention"
     """
 
     def __init__(self,
