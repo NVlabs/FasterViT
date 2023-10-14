@@ -15,7 +15,6 @@ from torch.nn.functional import interpolate as interpolate
 from timm.models.layers import DropPath, LayerNorm2d
 import numpy as np
 from util.misc import NestedTensor
-import pdb
 
 
 def window_partition(x, window_size):
