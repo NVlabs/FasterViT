@@ -1,0 +1,12 @@
+setup.py
+/home/ali/Downloads/DINO-main/models/dino/ops/src/vision.cpp
+/home/ali/Downloads/DINO-main/models/dino/ops/src/cpu/ms_deform_attn_cpu.cpp
+/home/ali/Downloads/DINO-main/models/dino/ops/src/cuda/ms_deform_attn_cuda.cu
+MultiScaleDeformableAttention.egg-info/PKG-INFO
+MultiScaleDeformableAttention.egg-info/SOURCES.txt
+MultiScaleDeformableAttention.egg-info/dependency_links.txt
+MultiScaleDeformableAttention.egg-info/top_level.txt
+functions/__init__.py
+functions/ms_deform_attn_func.py
+modules/__init__.py
+modules/ms_deform_attn.py
