@@ -7,7 +7,31 @@ Official PyTorch implementation of [**FasterViT: Fast Vision Transformers with H
 
 In this section, we present FasterViT object detection repository with [DINO: DETR with Improved DeNoising Anchor Boxes for End-to-End Object Detection](https://arxiv.org/abs/2203.03605).
 
-Please stay tuned for pre-trained checkpoints ! 
+Please stay tuned for more pre-trained checkpoints ! 
+
+## Model Zoo 
+
+### 12 epoch setting
+
+
+<table>
+  <tr>
+    <th>Model</th>
+    <th>Backbone</th>
+    <th>Box AP</th>
+    <th>Download</th>
+  </tr>
+
+<tr>
+    <td>DINO-4scale</td>
+    <td>FasterViT-4-21K-224</td>
+    <td>55.16</td>
+    <td><a href="https://huggingface.co/ahatamiz/FasterViT/resolve/main/DINO_4scale_faster_vit_4_21k_224_ms_coco.pth">model</a></td>
+</tr>
+
+</table>
+
+
 
 ## Licenses
 
