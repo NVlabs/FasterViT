@@ -116,7 +116,7 @@ We can test the model by passing a dummy input image. The output is the logits:
 - [x] FasterViT pip-package release
 - [x] Add capablity to initialize any-resolution FasterViT from ImageNet-pretrained weights. 
 - [x] ImageNet-21K pre-trained models
-- [ ] Detection code + models
+- [x] Detection code + models
 
 --- 
 
