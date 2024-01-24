@@ -1,0 +1,11 @@
+tqdm
+scipy
+
+# faster vit requirement
+timm==0.9.5
+pyyaml
+termcolor
+tensorboardX
+yacs
+onnx-graphsurgeon
+onnxsim
