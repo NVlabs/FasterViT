@@ -25,12 +25,13 @@ class="center">
 We introduce a new self-attention mechanism, denoted as Hierarchical
 Attention (HAT), that captures both short and long-range information by learning
 cross-window carrier tokens.
-
+[Title](downstream/object_tracking/motrv2)
 ![teaser](./fastervit/assets/hierarchial_attn.png)
 
 Note: Please use the [**latest NVIDIA TensorRT release**](https://docs.nvidia.com/deeplearning/tensorrt/container-release-notes/index.html) to enjoy the benefits of optimized FasterViT ops. 
 
 ## 💥 News 💥
+- **[01.24.2024]** 🔥🔥🔥 **Object Tracking with MOTRv2 + FasterViT** is now open-sourced ([link](./downstream/object_tracking/motrv2/README.md)) ! 
 - **[01.17.2024]** 🔥🔥🔥 FasterViT paper has been accepted to [ICLR 2024](https://openreview.net/group?id=ICLR.cc/2024/Conference#tab-your-consoles) !
 - **[10.14.2023]** 🔥🔥 We have added the FasterViT [object detection repository](./downstream/object_detection/dino/README.md) with [DINO](https://arxiv.org/abs/2203.03605) !
 - **[08.24.2023]** 🔥 FasterViT Keras models with pre-trained weights published in [keras_cv_attention_models](https://github.com/leondgarse/keras_cv_attention_models/tree/main/keras_cv_attention_models/fastervit) !  
