@@ -1,0 +1,35 @@
+--meta_arch motr
+--dataset_file e2e_dance
+--with_box_refine
+--batch_size 1
+--sample_mode random_interval
+--sampler_lengths 5
+--merger_dropout 0
+--dropout 0
+--random_drop 0.1
+--fp_ratio 0.3
+--query_interaction_layer QIMv2
+--query_denoise 0.05
+--num_queries 10
+--append_crowd
+--use_checkpoint
+--save_period 1
+
+--backbone faster_vit_4_21k_224
+--epoch 30
+--pretrained_backbone
+--stem_norm_type FrozenBatchNorm2d
+--output_norm_type LayerNorm
+--pretrained_dir /tmp/
+--lr_scheduler StepLR
+--lr_drop 11
+--lr 2e-4
+--lr_gamma 0.1
+--lr_backbone 1e-5
+--pretrained /develop/dl_tracking/public_code/FasterViT/downstream/object_tracking/motrv2/r50_deformable_detr_plus_iterative_bbox_refinement-checkpoint.pth
+--input_width 1536
+--input_height 800
+--resize_augment_scale 8
+--train_dataset trainval
+--testset_inference_mode
+--sample_interval 7
