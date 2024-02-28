@@ -25,7 +25,7 @@ class="center">
 We introduce a new self-attention mechanism, denoted as Hierarchical
 Attention (HAT), that captures both short and long-range information by learning
 cross-window carrier tokens.
-[Title](downstream/object_tracking/motrv2)
+
 ![teaser](./fastervit/assets/hierarchial_attn.png)
 
 Note: Please use the [**latest NVIDIA TensorRT release**](https://docs.nvidia.com/deeplearning/tensorrt/container-release-notes/index.html) to enjoy the benefits of optimized FasterViT ops. 
