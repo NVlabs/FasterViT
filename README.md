@@ -2,6 +2,8 @@
 
 Official PyTorch implementation of [**FasterViT: Fast Vision Transformers with Hierarchical Attention**](https://arxiv.org/abs/2306.06189).
 
+[![Star on GitHub](https://img.shields.io/github/stars/NVlabs/FasterViT.svg?style=social)](https://github.com/NVlabs/FasterViT/stargazers)
+
 [Ali Hatamizadeh](https://research.nvidia.com/person/ali-hatamizadeh),
 [Greg Heinrich](https://developer.nvidia.com/blog/author/gheinrich/),
 [Hongxu (Danny) Yin](https://hongxu-yin.github.io/),
