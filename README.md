@@ -33,6 +33,7 @@ cross-window carrier tokens.
 Note: Please use the [**latest NVIDIA TensorRT release**](https://docs.nvidia.com/deeplearning/tensorrt/container-release-notes/index.html) to enjoy the benefits of optimized FasterViT ops. 
 
 ## 💥 News 💥
+- **[04.02.2024]** 🔥 Updated [manuscript](https://arxiv.org/abs/2306.06189) now available on arXiv !
 - **[01.24.2024]** 🔥🔥🔥 **Object Tracking with MOTRv2 + FasterViT** is now open-sourced ([link](./downstream/object_tracking/motrv2/README.md)) ! 
 - **[01.17.2024]** 🔥🔥🔥 FasterViT paper has been accepted to [ICLR 2024](https://openreview.net/group?id=ICLR.cc/2024/Conference#tab-your-consoles) !
 - **[10.14.2023]** 🔥🔥 We have added the FasterViT [object detection repository](./downstream/object_detection/dino/README.md) with [DINO](https://arxiv.org/abs/2203.03605) !
