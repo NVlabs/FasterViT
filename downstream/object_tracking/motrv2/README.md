@@ -52,7 +52,7 @@ For running inference on the DanceTrack testset with multiple trained weights, e
 ## Acknowledgements
 
 - [MOTR](https://github.com/megvii-research/MOTR)
-- [MOTRv2] (https://github.com/megvii-research/MOTRv2)
+- [MOTRv2](https://github.com/megvii-research/MOTRv2)
 - [ByteTrack](https://github.com/ifzhang/ByteTrack)
 - [YOLOX](https://github.com/Megvii-BaseDetection/YOLOX)
 - [OC-SORT](https://github.com/noahcao/OC_SORT)
