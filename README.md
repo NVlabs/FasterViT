@@ -277,7 +277,7 @@ We can test the model by passing a dummy input image. The output is the logits:
 
 </table>
 
-
+Raw pre-trained ImageNet-21K model weights for FasterViT-4 is also available for download in this [link](https://drive.google.com/file/d/1T3jDrzlTmTcZVS1Dh01Fl3J2LXZHWKdL/view?usp=sharing).
 ### Robustness (ImageNet-A - ImageNet-R - ImageNet-V2)
 
 
