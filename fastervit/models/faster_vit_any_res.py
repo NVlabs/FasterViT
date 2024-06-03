@@ -12,7 +12,7 @@ import torch
 import torch.nn as nn
 from timm.models.registry import register_model
 from timm.models.layers import trunc_normal_, DropPath, LayerNorm2d
-from timm.models._builder import resolve_pretrained_cfg, _update_default_kwargs
+from timm.models._builder import resolve_pretrained_cfg, _update_default_model_kwargs
 from .registry import register_pip_model
 from pathlib import Path
 import numpy as np
@@ -1017,7 +1017,7 @@ def faster_vit_0_any_res(pretrained=False, **kwargs):
     model_path = kwargs.pop("model_path", "/tmp/faster_vit_0.pth.tar")
     hat = kwargs.pop("hat", [False, False, True, False])
     pretrained_cfg = resolve_pretrained_cfg('faster_vit_0_any_res').to_dict()
-    _update_default_kwargs(pretrained_cfg, kwargs, kwargs_filter=None)
+    _update_default_model_kwargs(pretrained_cfg, kwargs, kwargs_filter=None)
     model = FasterViT(depths=depths,
                       num_heads=num_heads,
                       window_size=window_size,
@@ -1054,7 +1054,7 @@ def faster_vit_1_any_res(pretrained=False, **kwargs):
     model_path = kwargs.pop("model_path", "/tmp/faster_vit_1.pth.tar")
     hat = kwargs.pop("hat", [False, False, True, False])
     pretrained_cfg = resolve_pretrained_cfg('faster_vit_1_any_res').to_dict()
-    _update_default_kwargs(pretrained_cfg, kwargs, kwargs_filter=None)
+    _update_default_model_kwargs(pretrained_cfg, kwargs, kwargs_filter=None)
     model = FasterViT(depths=depths,
                       num_heads=num_heads,
                       window_size=window_size,
@@ -1091,7 +1091,7 @@ def faster_vit_2_any_res(pretrained=False, **kwargs):
     model_path = kwargs.pop("model_path", "/tmp/faster_vit_2.pth.tar")
     hat = kwargs.pop("hat", [False, False, True, False])
     pretrained_cfg = resolve_pretrained_cfg('faster_vit_2_any_res').to_dict()
-    _update_default_kwargs(pretrained_cfg, kwargs, kwargs_filter=None)
+    _update_default_model_kwargs(pretrained_cfg, kwargs, kwargs_filter=None)
     model = FasterViT(depths=depths,
                       num_heads=num_heads,
                       window_size=window_size,
@@ -1129,7 +1129,7 @@ def faster_vit_3_any_res(pretrained=False, **kwargs):
     model_path = kwargs.pop("model_path", "/tmp/faster_vit_3.pth.tar")
     hat = kwargs.pop("hat", [False, False, True, False])
     pretrained_cfg = resolve_pretrained_cfg('faster_vit_3_any_res').to_dict()
-    _update_default_kwargs(pretrained_cfg, kwargs, kwargs_filter=None)
+    _update_default_model_kwargs(pretrained_cfg, kwargs, kwargs_filter=None)
     model = FasterViT(depths=depths,
                       num_heads=num_heads,
                       window_size=window_size,
@@ -1170,7 +1170,7 @@ def faster_vit_4_any_res(pretrained=False, **kwargs):
     model_path = kwargs.pop("model_path", "/tmp/faster_vit_4.pth.tar")
     hat = kwargs.pop("hat", [False, False, True, False])
     pretrained_cfg = resolve_pretrained_cfg('faster_vit_4_any_res').to_dict()
-    _update_default_kwargs(pretrained_cfg, kwargs, kwargs_filter=None)
+    _update_default_model_kwargs(pretrained_cfg, kwargs, kwargs_filter=None)
     model = FasterViT(depths=depths,
                       num_heads=num_heads,
                       window_size=window_size,
@@ -1212,7 +1212,7 @@ def faster_vit_5_any_res(pretrained=False, **kwargs):
     model_path = kwargs.pop("model_path", "/tmp/faster_vit_5.pth.tar")
     hat = kwargs.pop("hat", [False, False, True, False])
     pretrained_cfg = resolve_pretrained_cfg('faster_vit_5_any_res').to_dict()
-    _update_default_kwargs(pretrained_cfg, kwargs, kwargs_filter=None)
+    _update_default_model_kwargs(pretrained_cfg, kwargs, kwargs_filter=None)
     model = FasterViT(depths=depths,
                       num_heads=num_heads,
                       window_size=window_size,
@@ -1254,7 +1254,7 @@ def faster_vit_6_any_res(pretrained=False, **kwargs):
     model_path = kwargs.pop("model_path", "/tmp/faster_vit_6.pth.tar")
     hat = kwargs.pop("hat", [False, False, True, False])
     pretrained_cfg = resolve_pretrained_cfg('faster_vit_6_any_res').to_dict()
-    _update_default_kwargs(pretrained_cfg, kwargs, kwargs_filter=None)
+    _update_default_model_kwargs(pretrained_cfg, kwargs, kwargs_filter=None)
     model = FasterViT(depths=depths,
                       num_heads=num_heads,
                       window_size=window_size,
@@ -1296,7 +1296,7 @@ def faster_vit_4_21k_224_any_res(pretrained=False, **kwargs):
     model_path = kwargs.pop("model_path", "/tmp/fastervit_4_21k_224_w14.pth.tar")
     hat = kwargs.pop("hat", [False, False, False, False])
     pretrained_cfg = resolve_pretrained_cfg('faster_vit_4_21k_224_any_res').to_dict()
-    _update_default_kwargs(pretrained_cfg, kwargs, kwargs_filter=None)
+    _update_default_model_kwargs(pretrained_cfg, kwargs, kwargs_filter=None)
     model = FasterViT(depths=depths,
                       num_heads=num_heads,
                       window_size=window_size,
@@ -1338,7 +1338,7 @@ def faster_vit_4_21k_384_any_res(pretrained=False, **kwargs):
     model_path = kwargs.pop("model_path", "/tmp/fastervit_4_21k_384_w24.pth.tar")
     hat = kwargs.pop("hat", [False, False, False, False])
     pretrained_cfg = resolve_pretrained_cfg('faster_vit_4_21k_384_any_res').to_dict()
-    _update_default_kwargs(pretrained_cfg, kwargs, kwargs_filter=None)
+    _update_default_model_kwargs(pretrained_cfg, kwargs, kwargs_filter=None)
     model = FasterViT(depths=depths,
                       num_heads=num_heads,
                       window_size=window_size,
@@ -1380,7 +1380,7 @@ def faster_vit_4_21k_512_any_res(pretrained=False, **kwargs):
     model_path = kwargs.pop("model_path", "/tmp/fastervit_4_21k_512_w32.pth.tar")
     hat = kwargs.pop("hat", [False, False, False, False])
     pretrained_cfg = resolve_pretrained_cfg('faster_vit_4_21k_512_any_res').to_dict()
-    _update_default_kwargs(pretrained_cfg, kwargs, kwargs_filter=None)
+    _update_default_model_kwargs(pretrained_cfg, kwargs, kwargs_filter=None)
     model = FasterViT(depths=depths,
                       num_heads=num_heads,
                       window_size=window_size,
@@ -1422,7 +1422,7 @@ def faster_vit_4_21k_768_any_res(pretrained=False, **kwargs):
     model_path = kwargs.pop("model_path", "/tmp/fastervit_4_21k_768_w48.pth.tar")
     hat = kwargs.pop("hat", [False, False, False, False])
     pretrained_cfg = resolve_pretrained_cfg('faster_vit_4_21k_768_any_res').to_dict()
-    _update_default_kwargs(pretrained_cfg, kwargs, kwargs_filter=None)
+    _update_default_model_kwargs(pretrained_cfg, kwargs, kwargs_filter=None)
     model = FasterViT(depths=depths,
                       num_heads=num_heads,
                       window_size=window_size,
