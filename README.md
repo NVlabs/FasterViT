@@ -150,7 +150,7 @@ We can test the model by passing a dummy input image. The output is the logits:
     <td>224x224</td>
     <td>31.4</td>
     <td>3.3</td>
-    <td><a href="https://drive.google.com/uc?export=download&id=1twI2LFJs391Yrj8MR4Ui9PfrvWqjE1iB">model</a></td>
+    <td><a href="https://huggingface.co/ahatamiz/FasterViT/resolve/main/fastervit_0_224_1k.pth.tar">model</a></td>
 </tr>
 
 <tr>
@@ -161,7 +161,7 @@ We can test the model by passing a dummy input image. The output is the logits:
     <td>224x224</td>
     <td>53.4</td>
     <td>5.3</td>
-    <td><a href="https://drive.google.com/uc?export=download&id=1r7W10n5-bFtM3sz4bmaLrowN2gYPkLGT">model</a></td>
+    <td><a href="https://huggingface.co/ahatamiz/FasterViT/resolve/main/fastervit_1_224_1k.pth.tar">model</a></td>
 </tr>
 
 <tr>
@@ -172,7 +172,7 @@ We can test the model by passing a dummy input image. The output is the logits:
     <td>224x224</td>
     <td>75.9</td>
     <td>8.7</td>
-    <td><a href="https://drive.google.com/uc?export=download&id=1n_a6s0pgi0jVZOGmDei2vXHU5E6RH5wU">model</a></td>
+    <td><a href="https://huggingface.co/ahatamiz/FasterViT/resolve/main/fastervit_2_224_1k.pth.tar">model</a></td>
 </tr>
 
 <tr>
@@ -183,7 +183,7 @@ We can test the model by passing a dummy input image. The output is the logits:
     <td>224x224</td>
     <td>159.5</td>
     <td>18.2</td>
-    <td><a href="https://drive.google.com/uc?export=download&id=1tvWElZ91Sia2SsXYXFMNYQwfipCxtI7X">model</a></td>
+    <td><a href="https://huggingface.co/ahatamiz/FasterViT/resolve/main/fastervit_3_224_1k.pth.tar">model</a></td>
 </tr>
 
 <tr>
@@ -194,7 +194,7 @@ We can test the model by passing a dummy input image. The output is the logits:
     <td>224x224</td>
     <td>424.6</td>
     <td>36.6</td>
-    <td><a href="https://drive.google.com/uc?export=download&id=1gYhXA32Q-_9C5DXel17avV_ZLoaHwdgz">model</a></td>
+    <td><a href="https://huggingface.co/ahatamiz/FasterViT/resolve/main/fastervit_4_224_1k.pth.tar">model</a></td>
 </tr>
 
 <tr>
@@ -205,7 +205,7 @@ We can test the model by passing a dummy input image. The output is the logits:
     <td>224x224</td>
     <td>975.5</td>
     <td>113.0</td>
-    <td><a href="https://drive.google.com/uc?export=download&id=1mqpai7XiHLr_n1tjxjzT8q369xTCq_z-">model</a></td>
+    <td><a href="https://huggingface.co/ahatamiz/FasterViT/resolve/main/fastervit_5_224_1k.pth.tar">model</a></td>
 </tr>
 
 <tr>
@@ -216,7 +216,7 @@ We can test the model by passing a dummy input image. The output is the logits:
     <td>224x224</td>
     <td>1360.0</td>
     <td>142.0</td>
-    <td><a href="https://drive.google.com/uc?export=download&id=12jtavR2QxmMzcKwPzWe7kw-oy34IYi59">model</a></td>
+    <td><a href="https://huggingface.co/ahatamiz/FasterViT/resolve/main/fastervit_6_224_1k.pth.tar">model</a></td>
 </tr>
 
 </table>
